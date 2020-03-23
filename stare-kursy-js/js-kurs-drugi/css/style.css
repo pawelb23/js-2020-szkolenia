@@ -1,0 +1,58 @@
+body {
+    background-color: #4b91c4;
+}
+
+div {
+    box-sizing: border-box;
+    position: absolute;
+    padding: 10px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+
+}
+
+div#obliczenia {
+    background-color: azure;
+    height: 600px;
+    width: 600px;
+}
+
+div.wyliczenia {
+    background-color: aquamarine;
+    height: 400px;
+    width: 400px;
+}
+
+div.osobno1,
+div.osobno2,
+div.osobno3 {
+    height: 100px;
+    width: 300px;
+    border-left: 3px solid black;
+    border-right: 3px solid black;
+    overflow: auto;
+}
+
+div.wyliczenia.osobno1,
+div.wyliczenia.osobno3 {
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+}
+
+div.wyliczenia.osobno1 {
+    background-color: rgba(132, 83, 178, 0.3);
+    top: -200px;
+
+}
+
+div.wyliczenia.osobno2 {
+    background-color: rgba(36, 41, 111, 0.3);
+}
+
+div.wyliczenia.osobno3 {
+    background-color: rgba(46, 114, 59, 0.3);
+    top: 200px;
+}

@@ -1,0 +1,40 @@
+body {
+
+    background-color: cadetblue;
+
+}
+
+
+label,
+input {
+
+    margin: 10px;
+
+}
+
+input {
+
+    display: block;
+
+}
+
+form {
+
+    width: 215px;
+    background-color: rgba(98, 82, 62, 0.3);
+    box-sizing: border-box;
+    padding: 10px;
+
+}
+
+input[type="submit"] {
+
+    background-color: rgba(223, 234, 244, 0.9);
+
+}
+
+input[type="reset"] {
+
+    background-color: rgba(242, 227, 230, 0.9);
+
+}

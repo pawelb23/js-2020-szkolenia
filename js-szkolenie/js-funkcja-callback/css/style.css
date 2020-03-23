@@ -1,0 +1,13 @@
+    body {
+        background-color: rgba(205, 92, 92, 0.267);
+    }
+    
+    button.callback-klik {
+        margin: 2rem;
+        width: 7rem;
+        height: 5rem;
+        border-radius: 0.5rem;
+        border: 0.1rem solid black;
+        box-shadow: 0.5rem 0.5rem 1rem black;
+        background-color: rgba(5, 200, 5, 0.411);
+    }
