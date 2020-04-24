@@ -5,6 +5,8 @@ console.log(``);
 // Domyślne wartości
 // Domyślne wartości to sposób na radzenie sobie z argumentami funkcji, elementami tablic lub polami obiektów, które nie zostały zdefiniowane. W tych przypadkach zostają im przypisane wybrane wartości domyślne.
 
+// UWAGA!!! Wartości domyślne zadziałają tylko jeżeli będziemy mieli pierwotniewartość 'undefined'. Nie zadziałają w przypadku np. false, NaN, czy Null.
+
 // Domyślne wartości / Przykłady
 function greet(name = "Stranger") {
   return console.log("Hello, " + name + "!");
@@ -22,13 +24,13 @@ console.log(``);
 const homeCoordinates = [0.123456, undefined];
 const [x = 0, y = 0] = homeCoordinates;
 
-console.log(homeCoordinates);
+console.log(y);
 
 // brakuje współrzędnej 'x'
 const officeCoordinates = { xTwo: undefined, yTwo: 0.987654 };
 const { xTwo = 0, yTwo = 0 } = officeCoordinates;
 
-console.log(officeCoordinates);
+console.log(xTwo);
 
 console.log(``);
 
@@ -60,12 +62,28 @@ console.log(``);
 
 //----------
 
+const checkIt = { z: 7 };
+
 function funkAdd([x, y] = [1, 2], { z: z } = { z: 3 }) {
+  console.log(x);
+  console.log(y);
   console.log(z);
   return x + y + z;
 }
 
-console.log(funkAdd()); // 6
+console.log(funkAdd()); //wszystkie wartości zostaną odczytane jako domyślne
+
+console.log(``);
+
+console.log(funkAdd([5, 6], checkIt)); //wszystkie wartości zostaną odczytane
+
+console.log(``);
+
+console.log(funkAdd(undefined, checkIt)); //'x' i 'y' zostaną odczytane jako wartości domyślne (tylko z jednym undefined zadziała prawidłowo), zaś 'z' `zostanie pobrana z obiektu
+
+console.log(``);
+
+console.log(funkAdd([5, 6])); //'x' i 'y' zostaną odczytane, zaś 'z' sostanie odczytana jako wartość domyślna
 
 console.log(``);
 

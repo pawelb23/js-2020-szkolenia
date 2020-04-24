@@ -54,10 +54,7 @@ const mapFirst = new Map();
 // mapFirst.set("1", "Two");
 // mapFirst.set(true, "Three");
 
-mapFirst
-  .set(1, "One")
-  .set("1", "Two")
-  .set(true, "Three"); //To ten sam zapis co powyżej tylko na raz zamiast trzech kroków
+mapFirst.set(1, "One").set("1", "Two").set(true, "Three"); //To ten sam zapis co powyżej tylko na raz zamiast trzech kroków
 
 console.log(`Ilość elementów w mapFirst ---> ${mapFirst.size}`); //sprawdzamy ilość elementów
 
@@ -72,7 +69,7 @@ const pat = { name: "Pat", age: 42 }; //obiekt
 const mat = { name: "Mat", age: 42 }; //obiekt
 const neighbors = new Map([
   [pat, "1dpb0fcms"], //tworzymy Map, w którym kluczem jest obiekt, ale do Map przekazujemy tablicę gdzie klucz to obiekt i druga część tablicy to wartość
-  [mat, "1dpb0fnd6"] //tworzymy Map, w którym kluczem jest obiekt, ale do Map przekazujemy tablicę gdzie klucz to obiekt i druga część tablicy to wartość
+  [mat, "1dpb0fnd6"], //tworzymy Map, w którym kluczem jest obiekt, ale do Map przekazujemy tablicę gdzie klucz to obiekt i druga część tablicy to wartość
 ]); //w powyższym przykładzie konwertujemy tablice na Mapę
 
 console.log(neighbors.get(pat)); //Map
@@ -117,18 +114,19 @@ console.log(``);
 //Iteracja for of z destrukturyzacją Map
 
 for (let [key, value] of neighbors) {
-  console.log(`${key}: ${value}`);
-} //niestety nie dokońca wychodzi to samo co w internecie
+  //można też użyć for (let [key, value] of neighbors.entries()) ---> to to samo
+  console.log(`${key} : ${value}`);
+} //niestety nie dokońca wszystko się pokazuje bo wychodzi ---> [object Object] = 1dpb0fnd6      [object Object] = 1dpb0fcms
 
 console.log(``);
 
 const mapForEach = new Map([
   ["kolor1", "red"],
   ["kolor2", "blue"],
-  ["kolor3", "yellow"]
+  ["kolor3", "yellow"],
 ]);
 
-mapForEach.forEach(function(value, key, map) {
+mapForEach.forEach(function (value, key, map) {
   console.log(`
       Wartość: ${value}
       Klucz: ${key}
@@ -143,9 +141,9 @@ mapForEach.forEach(function(value, key, map) {
 // Ponieważ nie możemy bezpośrednio zamienić obiektu na Mapę. Musimy najpierw zamienić obiekt na tablicę ---> najłatwiej zrobimy to z pomocą metody entries()
 
 const data = {
-  firt: "just",
+  first: "just",
   second: "keep",
-  third: "learning!"
+  third: "learning!",
 };
 
 const obiektTurnToMap = new Map(Object.entries(data)); //zamieniamy obiekt na tablicę, a ten na mapę
@@ -175,7 +173,7 @@ console.log(``);
 // Set / Przykłady
 
 const names = new Set(["Pat", "Tom"]);
-names.add("Pat");
+names.add("Pat"); //nie doda bo już było
 names.add("Mat");
 names.delete("Tom");
 // Wypisuje 'Pat' i 'Mat' do konsoli
@@ -236,7 +234,7 @@ console.log(``);
 // W przypadku Set() klucze i wartości są takie same, dlatego robiąc pętle nie ważne czy użyjemy powyższych values(), keys(), entries() czy po prostu zrobimy pętlę for of:
 
 // Poniżej wyświetlimy wartości mySet
-mySet.forEach(function(value) {
+mySet.forEach(function (value) {
   //UWAGA!!! Będziemy mieli tylko jeden parametr, jeżeli wstawimy dwa parametry, wyświetli się nam po prostu ta sama wartość dwa razy
   console.log(value);
 });
@@ -257,6 +255,8 @@ console.log(newSetTwo);
 
 const newSetThree = new Set("kajak"); //wyświetli w konsoli {"k", "a", "j"} ---> zdublowane litery zostaną pominięte
 console.log(newSetThree);
+
+console.log(newSetThree.has("k"));
 
 console.log(``);
 

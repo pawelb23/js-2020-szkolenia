@@ -45,6 +45,11 @@ console.log(``);
 // Obiekty
 const student = { name: "John", age: 24, friends: ["Bob", "Tom"] };
 // destrukturyzacja obiektu
+
+const { age } = student; //wyciągamy wartość z obiektu do zewnętrznej zmiennej
+
+console.log(`Age --->${age}`);
+
 const { name, friends } = student;
 // wypisuje 'John has 2 friends!' do konsoli
 console.log("%s has %d friends!", name, friends.length); //%s odnosi się do stringów, %d odnosi się do wartości liczbowych
@@ -69,3 +74,117 @@ console.log("%s has %d friends!", firstName, friendsAlias.length); //%s odnosi s
 // console.log("%s has %d friends!", firstNameError, friends.length);//nie zadziała
 
 //----------
+
+// Używamy destrukturyzacji to samo co poniżej, ale trochę dłuższy zapis - z tym, że bardziej czytelny
+
+const frontEndPersonObject = {
+  name: "Zenon",
+  age: 103,
+  job: "programista", //"programmer"
+  hobby: "zbieranie znaczków" //"collecting stamps"
+};
+
+const functionPersonInfo = objectInfo => {
+  const { name, age, job, hobby } = objectInfo;
+  let ageEnding;
+  const newRegExp = /[2,3]$/;
+  if (age === 1) {
+    ageEnding = "rok";
+  } else if (newRegExp.test(age)) {
+    ageEnding = "lata";
+  } else {
+    ageEnding = "lat";
+  }
+  return console.log(`
+Imię ---> ${name},
+Wiek ---> ${age} ${ageEnding},
+Praca ---> ${job},
+Zainteresowania/hobby ---> ${hobby}
+`);
+};
+
+functionPersonInfo(frontEndPersonObject);
+
+console.log(``);
+
+//----------
+
+// Używamy destrukturyzacji to samo co wyżej inaczej zapisane (trochę krócej, ale zwłaszcza przy dużej liczbie obiektów i danych może być gorzej czytelne)
+
+const functionPersonInfoTwo = ({ name, age, job, hobby }) => {
+  // const { name, age, job, hobby } = objectInfo;
+  let ageEnding;
+  const newRegExp = /[2,3]$/;
+  if (age === 1) {
+    ageEnding = "rok";
+  } else if (newRegExp.test(age)) {
+    ageEnding = "lata";
+  } else {
+    ageEnding = "lat";
+  }
+  return console.log(`
+Imię ---> ${name},
+Wiek ---> ${age} ${ageEnding},
+Praca ---> ${job},
+Zainteresowania/hobby ---> ${hobby}
+`);
+};
+
+functionPersonInfoTwo(frontEndPersonObject);
+
+console.log(``);
+
+//----------
+
+const myObjectDetails = {
+  name: "Roman",
+  job: "programmer",
+  formerJobs: {
+    first: "form worker",
+    second: "waiter",
+    recent: "copywriter"
+  },
+  age: 30
+};
+
+const functionPersonInfoObjectInObject = ({
+  formerJobs: { first, second, recent }
+}) => {
+  console.log(`
+  First job --> ${first},
+  second ---> ${second},
+  recent ---> ${recent}.
+  `);
+};
+
+functionPersonInfoObjectInObject(myObjectDetails);
+
+console.log(``);
+
+//----------
+
+//To samo co wyżej tylko możemy wyciągać więcej danych
+
+const functionPersonInfoObjectInObjectTwo = myObjectDetails => {
+  const { name, job, formerJobs, age } = myObjectDetails;
+  const { first, second, recent } = formerJobs;
+  console.log(`
+  Name ---> ${name},
+  first job --> ${first},
+  second ---> ${second},
+  recent ---> ${recent},
+  formerJobs ---> ${formerJobs}.
+  `);
+  return console.log(formerJobs);
+};
+
+functionPersonInfoObjectInObjectTwo(myObjectDetails);
+
+console.log(``);
+
+//----------
+let foo = `"abc"`;
+let bar = 23;
+[bar, foo] = [foo, bar];
+// wypisuje `foo = 2, bar = 1` do konsoli
+console.log(`foo = %d, bar = %s`, foo, bar);

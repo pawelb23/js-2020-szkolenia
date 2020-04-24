@@ -15,7 +15,7 @@
 //});
 
 //Okazuje się, że ten kod można jeszcze bardziej skrócić (też przy pomocy jQuery).
-$(function() {
+$(function () {
   console.log("Biblioteka jQuery została wczytana!");
   console.log("");
 });
@@ -136,14 +136,11 @@ console.log($("#data-div").data("hidden")); // => false
 var animalsSelect = $("#animals");
 
 $("#animals").on({
-  dblclick: function() {
-    $("#animal-result").val(
-      $(this)
-        .val()
-        .toUpperCase()
-    ); //wybieramy cat lub dog, zmieniamy litery na duże i wstawiamy w input
+  dblclick: function () {
+    // ---> To ten sam zapis  "dblclick": po prostu VSC sam to zmienia (czyli usuwa cudzysłów w zdarzeniach)
+    $("#animal-result").val($(this).val().toUpperCase()); //wybieramy cat lub dog, zmieniamy litery na duże i wstawiamy w input
     //w krokach wybieramy pusty input i potem z pomocą val wstawiamy zwierzę wybrane z pomocą dblclick - aby był to wybór, który nas interesuje także używamy metody val i na koniec to co chcemy wstawić (jeszcze przed wstawieniem) zmieniamy na pismo dużymi literami
-  }
+  },
 });
 
 console.log("");
@@ -152,10 +149,10 @@ console.log("");
 
 $("#test-id")
   .css({
-    backgroundColor: "green"
+    backgroundColor: "green",
   })
   .hide("slow")
-  .show(2000); //albo np. tak
+  .show(2500); //albo np. tak
 
 console.log($(".test-class"));
 
@@ -233,13 +230,11 @@ $(".test-class-two p:last-child").removeClass("class-to-remove also-to-remove");
 //Znajdź potomków elementu <div> o class= "first" i nadaj im kolor tekstu i
 //kolor obramowania czerwony.
 
-$("div")
-  .find(".change-with-find")
-  .css({
-    color: "rgba(89, 51, 132, 0.9)",
-    border: "2px solid black",
-    backgroundColor: "rgba(223, 234, 244, 0.3)"
-  }); //zmienimy kolor czcionki, wstawiamy obwódkę i jej kolor --- (uwaga w przypadku border trzeba podać parametr odpowiadający za rodzaj obwódki u nas solid - czyli jednolita)
+$("div").find(".change-with-find").css({
+  color: "rgba(89, 51, 132, 0.9)",
+  border: "2px solid black",
+  backgroundColor: "rgba(223, 234, 244, 0.3)",
+}); //zmienimy kolor czcionki, wstawiamy obwódkę i jej kolor --- (uwaga w przypadku border trzeba podać parametr odpowiadający za rodzaj obwódki u nas solid - czyli jednolita)
 
 //---
 
@@ -262,14 +257,14 @@ $("div")
 //wszystkich elementów <li>, która wypisuje w konsoli tekst znajdujący
 //się w elementach <li>.
 
-$(".move-p-text").click(function() {
+$(".move-p-text").click(function () {
   $(".move-p-text").css({
     color: "green",
-    backgroundColor: "rgba(148, 197, 242, 0.4)"
+    backgroundColor: "rgba(148, 197, 242, 0.4)",
   }); //dodajemy trochę stylowania
   $(".move-p-text").attr("disabled", "disabled"); //dodajemy atrybut blokujący buttona - wymama dwóch danych w nawiasie
 
-  $(".button-and-p-div p").each(function() {
+  $(".button-and-p-div p").each(function () {
     console.log($(this).text()); //this sprawi, że w konsoli zostaną wypisane jeden pod drugim(w osobnych liniach konsoli) wszystkie teksty z elementów <p>, zawartych w <div class="button-and-p-div>
     //        console.log($('.button-and-p-div p').text());
   });
@@ -348,7 +343,7 @@ alertButton.on("click", hello); //Najpierw trzeba sprawdzić co się stanie po k
 
 //Drugi sposób - ciekawszy bo tak możemy podpiąć kilka zdarzeń do jednego elementu
 $("form").on({
-  submit: function(e) {
+  submit: function (e) {
     e.preventDefault();
     $('input[type="submit"]').attr("class", "disabled-on");
     $('input[type="submit"]').attr("disabled", "disabled");
@@ -359,22 +354,22 @@ $("form").on({
     console.log("E-mail: " + $("#email").val());
     console.log("");
   },
-  mouseover: function() {
+  mouseover: function () {
     if ($('input[type="submit"]').hasClass("disabled-on")) {
       $("form").css({
-        backgroundColor: "rgba(98, 82, 62, 0.3)"
+        backgroundColor: "rgba(98, 82, 62, 0.3)",
       });
     } else {
       $("form").css({
-        backgroundColor: "rgba(98, 82, 62, 0.5)"
+        backgroundColor: "rgba(98, 82, 62, 0.5)",
       });
     }
   },
-  mouseout: function() {
+  mouseout: function () {
     $("form").css({
-      backgroundColor: "rgba(98, 82, 62, 0.3)"
+      backgroundColor: "rgba(98, 82, 62, 0.3)",
     });
-  }
+  },
 });
 
 //===================
@@ -412,20 +407,14 @@ $("form").on({
 //} );
 
 $(".p-class1 span").on({
-  mouseover: function(e) {
-    $(".p-class1")
-      .find("span")
-      .eq(0)
-      .fadeOut(2500);
+  mouseover: function (e) {
+    $(".p-class1").find("span").eq(0).fadeOut(2500);
     e.stopPropagation();
   },
-  mouseout: function(e) {
-    $(".p-class1")
-      .find("span")
-      .eq(0)
-      .fadeIn(2500);
+  mouseout: function (e) {
+    $(".p-class1").find("span").eq(0).fadeIn(2500);
     e.stopPropagation();
-  }
+  },
 });
 
 //Za pomocą metody slideUp() i slideDown() można płynnie zwijać
@@ -459,3 +448,11 @@ $(".p-class1 span").on({
 //$( "div" ).animate( { left: '100px' }, "slow" );
 //$( "div" ).animate( { fontSize: '3em' }, "slow" );
 //} );
+
+//--------------------
+
+// http://kursjs.pl/kurs/jquery/jquery.php
+
+// Jeżeli chcemy do elementu podpiąć event, który wykona się tylko jeden raz (a zaraz potem zostanie usunięty), skorzystamy z metody .one()
+
+// Aby odpiąć dane zdarzenie, skorzystamy z metody off(). Działa ona praktycznie tak samo jak removeEventListener, czyli jeżeli chcemy odpiąć jakąś funkcję, powinniśmy przekazać ją jako parametr

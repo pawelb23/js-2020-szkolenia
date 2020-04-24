@@ -1,4 +1,4 @@
-"use strict";
+// "use strict";
 
 console.log(`JS - słowo kluczowe - 'this'`);
 
@@ -91,7 +91,7 @@ console.log(``);
 
 console.log(this);
 
-this.numberWithThisWindow = 25; //słówko this powoduje, że numberWithThisWindow stanie się właściwością obiekut, a 25 wartością tej właściwości --- będzie to właściwość i wartość, którą odczytamy (poniżej) na obiekcie window
+this.numberWithThisWindow = 25; //słówko this powoduje, że numberWithThisWindow stanie się właściwością obiektu, a 25 wartością tej właściwości --- będzie to właściwość i wartość, którą odczytamy (poniżej) na obiekcie window
 
 console.log(``);
 
@@ -107,9 +107,9 @@ console.log(``);
 
 //-----------
 
-let sayNameMixin = function(obj) {
+let sayNameMixin = function (obj) {
   //pod object podstawiamy dalej obiekt
-  obj.sayName = function() {
+  obj.sayName = function () {
     //na tym poziomie podstawiony obiekt otrzymuje nową właściwość, a wartość tej właściwości będzie równa funkcji
     // console.log(sayName);
     console.log(this.name);
@@ -118,19 +118,19 @@ let sayNameMixin = function(obj) {
 
 var me = {
   name: "Tyler",
-  age: 25
+  age: 25,
 };
 
 var you = {
   name: "Joey",
-  age: 21
+  age: 21,
 };
 
 sayNameMixin(me); //podstawiamy obiekt
 sayNameMixin(you); //podstawiamy obiekt
 
-me.sayName(); //docieramy do właściwości obetu sayName i wartości tej właściwości czyli funkcji, w której to w console.log odczytujemy name brane z obiektu me
-you.sayName(); //docieramy do właściwości obetu sayName i wartości tej właściwości czyli funkcji, w której to w console.log odczytujemy name brane z obiektu you
+me.sayName(); //docieramy do właściwości obetu sayName i wartości tej właściwości czyli funkcji, w której to w console.log odczytujemy name pobrane z obiektu 'me'
+you.sayName(); //docieramy do właściwości obetu sayName i wartości tej właściwości czyli funkcji, w której to w console.log odczytujemy name pobrane z obiektu 'you'
 
 console.log(``);
 
@@ -144,19 +144,19 @@ console.log(``);
 
 //-----------
 
-let Person = function(name, age) {
+let Person = function (name, age) {
   return {
     name: name,
     age: age,
-    sayName: function() {
+    sayName: function () {
       console.log(this.name);
     },
     mother: {
       name: "Stacey",
-      sayName: function() {
+      sayName: function () {
         console.log(this.name);
-      }
-    }
+      },
+    },
   };
 };
 
@@ -175,15 +175,15 @@ function personInSecondExample(name, age) {
   return {
     name: name,
     age: age,
-    sayName: function() {
+    sayName: function () {
       console.log(this.name);
     },
     mother: {
       name: "Judy",
-      sayName: function() {
+      sayName: function () {
         console.log(this.name);
-      }
-    }
+      },
+    },
   };
 }
 
@@ -198,13 +198,13 @@ console.log(``);
 
 // this z wykorzystaniem metody call()
 
-let getNameFromObject = function() {
-  console.log(`My name is ${this.name}`); //this odnie
+let getNameFromObject = function () {
+  console.log(`My name is ${this.name}`); //this
 };
 
 let objectName = {
   name: "Tiffany",
-  age: 35
+  age: 35,
 };
 
 getNameFromObject.call(objectName); //wykorzystujemy do funkcji getNameFromObject dane z obiektu objectName z użyciem metody call()
@@ -227,7 +227,7 @@ function weUseCallInThisFunction(one, two, three) {
 
 let objectInformation = {
   noImportant: 12,
-  ourThis: `'NASZE THIS z użyciem call()'`
+  ourThis: `'NASZE THIS z użyciem call()'`,
 };
 
 weUseCallInThisFunction.call(
@@ -289,13 +289,15 @@ console.log(``);
 var x = "window",
   obj1 = {
     x: `"xXx"`,
-    test: function(metodaInfo) {
+    test: function (metodaInfo) {
       console.log(`obj1.test ${metodaInfo} ---> ` + this.x);
-    }
+    },
   },
   test;
 
-// test = obj1.test; // przypisujemy referencję do funkcji `obj1.test'. Całkowicie prawidłowa składnia, ale poinżej nie zadziała (jeżeli odkomentujemy) po wywyołaniu funkcji
+//test = obj1.test()//to zadziała, ale nie o to nam chodzi, chcemy do zmiennej test przypisać metodę test z obiektu obj1 i później dopiero wywołać czyli ---> test = obj1.test;  a potem  ---> test();
+
+// test = obj1.test; // przypisujemy referencję do funkcji `obj1.test'. Całkowicie prawidłowa składnia, ale poniżej nie zadziała (jeżeli odkomentujemy) po wywyołaniu funkcji
 
 // test(); //jeżeli tutaj i powyżej odkomentujemy to nie zadziała
 
@@ -323,7 +325,7 @@ console.log(``);
 
 function Constructor() {
   this.x = `Jestem wartością ---> 'Constructor'a.(właściwości) x'`;
-  this.test = function() {
+  this.test = function () {
     console.log(this.x);
   };
 }
@@ -383,7 +385,7 @@ var showIt = new ShowMeThisThis(); //tworzymy nowy obiekt
 
 // console.log(showIt); //wywołamy widok w obiekcie --> właściwość: wartość(tej właściwości)
 
-console.log(showIt.password); //po kropce słowo password to właściwość obiektu, więce w konsoli zobaczymy tylko wartość właściwości password obiektu ShowMeThisThis
+console.log(showIt.password); //po kropce słowo password to właściwość obiektu, więc w konsoli zobaczymy tylko wartość właściwości password obiektu ShowMeThisThis
 
 //---------
 
@@ -412,6 +414,7 @@ console.log(``);
 // dla porównania poprzedni przypadek tylko z zapisem dwóch zwykłych funkcji (jednej w drugiej)
 
 // Aby porównać należy odkomentować i zakomentować poprzednią funkcję
+
 // function showNumberWithRegularFunctionInside() {
 //   this.number = 0;
 
@@ -429,3 +432,28 @@ console.log(``);
 // let showMeThisNumberWithoutArrow = new showNumberWithRegularFunctionInside();
 
 //---------
+
+// krótka zabawa z this ---> można sprawdzić po odkomentowaniu
+
+// function PersonThis(name = "undefined") {
+//   this.name = name;
+//   if (name !== "undefined") {
+//     console.log(`Person ${name} został utworzony`);
+//   } else {
+//     console.log(`Person ${this} został utworzony`);
+//   }
+// }
+
+// var person1 = new PersonThis("Zbychu");
+
+// console.log(``);
+
+// var person2 = new PersonThis();
+
+// console.log(``);
+
+// PersonThis.call("Zdzichu"); //nie zadziała z 'use strict' podpiętym przed kodem w pliku
+
+// console.log(``);
+
+//----------

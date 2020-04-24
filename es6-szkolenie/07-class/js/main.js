@@ -58,14 +58,14 @@ console.log(``);
 
 //------------
 
-// Klasy są w zasadzie "szczególnymi funkcjami". Pododnie jak w funkcji można definiować wyrażenie function i deklaracje funkcji, tak składnia klasy posiada dwa komponenty: wyrażenie class i deklaracje klasy.
+// Klasy są w zasadzie "szczególnymi funkcjami". Pododnie jak w funkcji można definiować wyrażenie function i deklaracje funkcji, taka składnia klasy posiada dwa komponenty: wyrażenie class i deklaracje klasy.
 
 // Hoisting
 // Ważną różnicą pomiędzy deklaracją funkcji, a deklaracją klasy jest to, że deklaracje funkcji są przenoszone na początek (hoisted) a klas nie. Najpierw musisz zadeklarować swoją klasę by mieć do niej dostęp, w przeciwnym razie kod, jak ten poniżej, wygeneruje wyjątek ReferenceError:
 
 // Przykład:
 
-// var p = new Prostokat(); // ReferenceError
+// var prost = new Prostokat(); // ReferenceError
 
 // class Prostokat {}
 
@@ -126,7 +126,6 @@ class Prostokat {
     this.wysokosc = wysokosc;
     this.szerokosc = szerokosc;
   }
-
   get pole() {
     return this.liczPole();
   }
@@ -138,7 +137,7 @@ class Prostokat {
 
 const kwadrat = new Prostokat(10, 10);
 
-console.log(kwadrat.pole); //będzie 100 - get pozwal nie pisać console.log tak ---> console.log(kwadrat.pole());
+console.log(kwadrat.pole); //będzie 100 - get łączy właściwość obiektu z funkcją, która będzie wykonywana za każdym razem, kiedy ta właściwość jest wywoływana
 
 console.log(kwadrat.liczPole()); //da ten sam wynik co linijkę wyżej
 
@@ -283,7 +282,7 @@ const users = [
   new User("Beata", 20),
   new User("Monika", 20),
   new User("Karol", 22),
-  new User("Bartek", 50)
+  new User("Bartek", 50),
 ]; //To jest instancja klasy
 
 users.sort(User.compareByName);
@@ -377,7 +376,7 @@ console.log(myBook);
 
 //Odwołując się do prototypu danej klasy (poniżej) możemy dodawać nowe metody, które będą dostępne dla każdej instancji tej klasy
 
-Media.prototype.getFullName = function() {
+Media.prototype.getFullName = function () {
   return `'${this.name}' - auth. ${this.author}`;
 };
 
@@ -443,3 +442,135 @@ console.log(myClassSong.getFullName());
 console.log(``);
 
 //-------------
+
+// ECMAScript 6 wprowadził zestaw nowych słów kluczowych do implementacji klas. Mimo, że konstrukcje te mogą wydawać się znajome programistom języków opartych na klasach, nie są one tym samym. JavaScript wciąż opiera się na prototypach. Nowe słowa kluczowe to class, constructor, static, extends oraz super.
+
+class Polygon {
+  constructor(height, width) {
+    this.height = height;
+    this.width = width;
+  }
+}
+
+class Square extends Polygon {
+  constructor(sideLength) {
+    super(sideLength, sideLength);
+  }
+  get area() {
+    return this.height * this.width;
+  }
+  set sideLength(newLength) {
+    this.height = newLength;
+    this.width = newLength;
+  }
+}
+
+var square = new Square(2);
+
+console.log(square);
+
+console.log(square.area);
+
+square.sideLength = 5; //zmieniamy wartość sideLength wewnątrz funkcji co powoduje i zmianę funkcji area (poniżej)
+console.log(square.area);
+
+console.log(``);
+
+//----------------
+
+// Składnia 'get' łączy właściwość obiektu z funkcją, która będzie wykonywana za każdym razem, kiedy ta właściwość jest wywoływana.
+
+// Składnia
+
+// {get prop() { ... } }
+// {get [expression]() { ... } }
+
+// Parametry
+
+// prop
+//     Nazwa właściwości, która łączy ją z okresloną funkcją.
+// expression
+//     Począwszy od ECMAScript 2015, można również użyć wyrażeń w celu połaczenia funkcji z nazwą właściwości, która jest obliczana.
+
+// Opis
+
+// Czasami pożądane jest aby umożliwić dostęp do właściwości, która zwraca wartość obliczaną dynamicznie lub potrzeba odzwierciedlić stan jakiejś wewnętrznej zmiennej bez potrzeby użycia wyraźnego wywołania metody. W języku JavaScript może to być osiągnięte dzięki użyciu gettera. Nie jest możliwe jednocześnie mieć getter połączony z właściwością i mieć tą właściwość (o takiej samej nazwie jak getter), która faktycznie trzyma wartość. Jednakże jest możliwe aby używać połączenia gettera i settera, żeby utworzyć rodzaj pseudo-właściwości.
+
+// Zauważ, że gdy pracujemy ze składnią 'get' to:
+
+//    a) można mieć identyfikator, który jest zarówno typu number jak i string;
+//    b) obowiązkowe jest aby zawierała dokładnie zero parametrów;
+//    c) nie może pojawiać się w literale obiektu z innym getem lub właściwością o takich samych nazwach ({ get x() { }, get x() { } } oraz { x: ..., get x() { } } są niedozwolone).
+
+// Getter może być usunięty poprzez operator delete.
+
+// Przykłady
+
+// Definiowanie gettera na nowym obiekcie w inicjalizatorze obiektu.
+
+// To stworzy pseudowłaściwość latest dla obiektu obj, która zwróci ostatnio zalogowany element w tablicy log.
+
+var obj = {
+  log: ["test", "drugi test", "trzeci test"],
+  get latest() {
+    if (this.log.length == 0) return undefined;
+    // console.log(this.log[0]);
+    return this.log[this.log.length - 1];
+  },
+};
+console.log(obj.latest); // Zwróci "test".
+
+// Zauważ, że usiłowanie przypisania wartości do latest nie zmieni jej.
+// Usuwanie gettera używając operatora delete
+
+// Jeśli chcesz usunąć getter, wystarczy użyć delete :
+
+// delete obj.latest;
+
+//------------
+
+// Składnia set wiąże właściwość obiektu z funkcją, która zostanie wywołana przy próbie przypisania wartości danej właściwości.
+
+// const language = {
+//   set current(name) {
+//     this.log.push(name);
+//   },
+//   log: []
+// }
+
+// language.current = 'EN';
+// language.current = 'FA';
+
+// console.log(language.log);
+// expected output: Array ["EN", "FA"]
+
+// Składnia
+
+// {set prop(val) { . . . }}
+// {set [expression](val) { . . . }}
+
+// Parametry
+
+// prop
+//     Nazwa właściwości wiązanej z określoną funkcją.
+
+// val
+//     Zmienna przechowująca wartość przekazaną do przypisania do właściwości prop.
+// expression
+//     Począwszy od ECMAScript 2015, można również użyć wyrażeń w celu połaczenia funkcji z nazwą właściwości, która jest obliczana.
+
+// Description
+
+// Setter może być użyty do wywołania określonej funkcji przy każdej próbie przypisania wartości do danej właściwości. Settery są najczęściej używane razem z getterami żeby utworzyć rodzaj pseudo-właściwości. Nie ma możliwości jednoczesnego używania settera oraz faktycznej wartości przypisanej do danej właściwości.
+
+// Uwagi do składni set:
+
+//    a) można utworzyć identyfikator typu number lub string;
+//    b) setter musi mieć jeden paramter;
+//    c) setter nie może być zdefiniowany kilkukrotnie dla danej właściwości. Jednoczesne użycie settera i faktycznej wartości przypisanej do właściwości jest zabronione ( { set x(v) { }, set x(v) { } } oraz { x: ..., set x(v) { } } są zabronione)
+
+// Setter może być usunięty przy użyciu operatora delete.
+
+// delete o.current;
+
+//--------------

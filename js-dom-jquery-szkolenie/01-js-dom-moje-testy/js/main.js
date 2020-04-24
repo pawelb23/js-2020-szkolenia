@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-console.log('Hello World!!!');
+console.log("Hello World!!!");
 
 console.log("");
 
@@ -96,7 +96,8 @@ btn.setAttribute("class", "first-class-test"); //dodajemy nową klasę wraz z wa
 
 document.querySelector(".first-class-test").classList.add("second-class-test"); //tak dodamy drugą klasę czyli "second-class-test" do już wcześniej istniejącej
 
-var newTestValue = document.querySelector(".second-class-test").value = "new-test-value"; //opisywany wcześniej przykład do value
+var newTestValue = (document.querySelector(".second-class-test").value =
+  "new-test-value"); //opisywany wcześniej przykład do value
 
 //document.querySelector("#container-two span:first-child button").removeAttribute("value");//usunie atrybut value z button'a (dodany wcześniej)
 
@@ -108,7 +109,10 @@ var newTestValue = document.querySelector(".second-class-test").value = "new-tes
 
 var comment = document.createComment("To jest nowy komentarz"); //tworzy komentarz
 
-document.getElementById("container-two").getElementsByTagName("span")[1].appendChild(comment);
+document
+  .getElementById("container-two")
+  .getElementsByTagName("span")[1]
+  .appendChild(comment);
 //tak dotarliśmy i wstawiliśmy komentarz w --- div id="container-two" ---> przechodzimy do drugiego span ---> i na końcu (bo mamy appendChild) ustawiamy komentarz
 
 console.log(document.querySelector("#container-two span:nth-child(2)")); //tak docieramy przy użyciu querySelector do np. drugiego dziecka --- div id="container-two" czyli do drugiego span'u
@@ -119,7 +123,9 @@ console.log(document.querySelectorAll("#container-two span")); //tak znajdujemy 
 
 console.log("");
 
-var addCommentToElementP = document.querySelector("#container-two span:last-child p").appendChild(comment); //dodajemy komentarz do p znajdującego się w ostatnim span - div'a id="container-two"
+var addCommentToElementP = document
+  .querySelector("#container-two span:last-child p")
+  .appendChild(comment); //dodajemy komentarz do p znajdującego się w ostatnim span - div'a id="container-two"
 
 console.log(document.querySelector("#container-two span:last-child"));
 
@@ -139,21 +145,26 @@ console.log("");
 
 console.log(document.querySelector("#sectionFirst a:empty")); //odszukaliśmy pusty element 'a'
 
-console.log("")
+console.log("");
 
-var elHtml = '<div id="bloczek" title="To jest tekst w dymku" class="uber-element" style="background-color:#216d4a">Tekst w divie</div>'; //stowrzenie elementu w czystym js (chociaż później są problemy z dodaniem go)
+var elHtml =
+  '<div id="bloczek" title="To jest tekst w dymku" class="uber-element" style="background-color:#216d4a">Tekst w divie</div>'; //stowrzenie elementu w czystym js (chociaż później są problemy z dodaniem go)
 
-
-document.querySelector("#sectionFirst #parFirst a:last-child").insertAdjacentHTML("afterend", elHtml); //ciekawa metoda insertAdjaentHTML -- warto zapamiętać i sprawdzić
+document
+  .querySelector("#sectionFirst #parFirst a:last-child")
+  .insertAdjacentHTML("afterend", elHtml); //ciekawa metoda insertAdjaentHTML -- warto zapamiętać i sprawdzić
 
 console.log(document.querySelector("#parFirst").childNodes); //wyświetlamy --- div id="parFirst" (w którym jest także utworzony element elHtml)
 
-document.querySelector("#sectionSecond span").innerHTML = 'Ten tekst i znacznik "p" dodaliśmy w elemencie "span" znajdującym się w --- section id="sectionSecond"' //Jeżeli tekst na stronie, kiedy otworzymy zbadaj (w zakładce - elements) nie zmieści się w jednej linii ze znacznikami, to pojawi się zawsze w pazurkach (przynajmniej na chromie)
+document.querySelector("#sectionSecond span").innerHTML =
+  'Ten tekst i znacznik "p" dodaliśmy w elemencie "span" znajdującym się w --- section id="sectionSecond"'; //Jeżeli tekst na stronie, kiedy otworzymy zbadaj (w zakładce - elements) nie zmieści się w jednej linii ze znacznikami, to pojawi się zawsze w pazurkach (przynajmniej na chromie)
 
 console.log("");
 
-//Poniżej - przy użyciu removeAttributeNode usuwamy href="#" z ostatniego elementu 'a' znajdującego się w --- <div="parSecond"> 
-var weNeedElementA = document.querySelector("#sectionSecond #parSecond a:last-child"); //znajdujemy szukany element czyli ostatnie a w div'ie #parSecond 
+//Poniżej - przy użyciu removeAttributeNode usuwamy href="#" z ostatniego elementu 'a' znajdującego się w --- <div="parSecond">
+var weNeedElementA = document.querySelector(
+  "#sectionSecond #parSecond a:last-child"
+); //znajdujemy szukany element czyli ostatnie a w div'ie #parSecond
 
 console.log(weNeedElementA); //tylko sprawdzenie czy działa
 //
@@ -163,7 +174,7 @@ var deleteHrefFromA = weNeedElementA.removeAttributeNode(weNeedHref); //usuwamy 
 
 console.log("");
 
-//Poniżej - przy użyciu removeChild usuwamy z <div id="parSecond"> element 'p' wraz z jego zawartością czyli usuwamy <p>Całość włącznie ze znacznikiem 'p' zostanie usunięta</p> --- to usuwamy 
+//Poniżej - przy użyciu removeChild usuwamy z <div id="parSecond"> element 'p' wraz z jego zawartością czyli usuwamy <p>Całość włącznie ze znacznikiem 'p' zostanie usunięta</p> --- to usuwamy
 var elementPToRemove = document.querySelector("#parSecond p:nth-child(2)"); //na początku tworzymy sobie dokładną ścieżkę do elemenut, który chcemy usunąć
 
 document.querySelector("#parSecond").removeChild(elementPToRemove); //tutaj z pomocą var elementPToRemove, który jest odnośnikiem do stworzonej wcześniej ścieżki, usuwamy element 'p' wraz z zawartością
@@ -177,27 +188,27 @@ document.getElementById("blink-link").href = "new-href"; //zmieni zawartość hr
 
 //console.log("");
 
-document.querySelector("#sectionThree #parThree a:last-child").href = "href-in-last-a"; //wstawiamy w ostatni znacznik 'a' --- href="href-in-last-a" ------- UWAGA!!!(jak wyżej) Z obserwacji widzę, że działa tylko ze znacznikami 'a'
+document.querySelector("#sectionThree #parThree a:last-child").href =
+  "href-in-last-a"; //wstawiamy w ostatni znacznik 'a' --- href="href-in-last-a" ------- UWAGA!!!(jak wyżej) Z obserwacji widzę, że działa tylko ze znacznikami 'a'
 
 //Możemy także dodawać oraz ustawiać/zmieniać style CSS dla danego elementu za pomocą konstrukcji składni odpowiadającej CSS
 //Przykład
 document.getElementById("blink-link").style.color = "brown"; //zmianie ulegnie  <a id="blink-link" href="we-will-change-this-href">Akapit Link 3 - zmienia kolor na czerwony</a>
 
-console.log(document.querySelector("#sectionThree #parThree a:last-child").parentNode); //zwraca węzeł rodzica - u nas <div id="parThree">(wraz ze środkiem)</div> >>> parentElement --- zwraca element-rodzica (ale tak naprawdę w konsoli widok jest ten sam)
+console.log(
+  document.querySelector("#sectionThree #parThree a:last-child").parentNode
+); //zwraca węzeł rodzica - u nas <div id="parThree">(wraz ze środkiem)</div> >>> parentElement --- zwraca element-rodzica (ale tak naprawdę w konsoli widok jest ten sam)
 
 console.log("");
 
 //DOMContentLoaded
 
 //Żeby móc pobierać elementy ze strony, powinny być one już dostępne dla skryptu, czyli powinny być już wczytane przez przeglądarkę. Aby mieć pewność, że kod, który odwołuje się do elementów w kodzie HTML poczeka na ich wczytanie, powinniśmy użyć zdarzenia DOMContentLoaded. Wszystkie skrypty operujące na elementach DOM powinny korzystać z tego eventu.
-document.addEventListener("DOMContentLoaded", function (event) {
-
-    console.log("DOM został wczytany");
-    console.log("Tutaj dopiero wyłapujemy elementy");
-    console.log("");
-
+document.addEventListener("DOMContentLoaded", function(event) {
+  console.log("DOM został wczytany");
+  console.log("Tutaj dopiero wyłapujemy elementy");
+  console.log("");
 });
-
 
 //Według >>> MDN <<< DOMContentLoaded może odpalić, zanim skrypt uruchomi się, dlatego dobrze jest to sprawdzić, tak jak poniżej.
 //function doSomething() {
@@ -210,90 +221,84 @@ document.addEventListener("DOMContentLoaded", function (event) {
 //  doSomething();
 //}
 
-document.addEventListener("DOMContentLoaded", function () {
-
-    var btn = document.getElementById('btn');
-    console.log(btn.innerText); //Kliknij mnie
-    console.log("");
-
+document.addEventListener("DOMContentLoaded", function() {
+  var btn = document.getElementById("btn");
+  console.log(btn.innerText); //Kliknij mnie
+  console.log("");
 });
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
+  const tab = document.getElementById("tabelka");
 
-    const tab = document.getElementById('tabelka');
+  const td = tab.getElementsByTagName("td"); //pobieramy wszystkie td z tabeli
 
-    const td = tab.getElementsByTagName('td'); //pobieramy wszystkie td z tabeli
+  console.log(td.length); //wypisuje sobie ilość elementów w kolekcji
 
-    console.log(td.length); //wypisuje sobie ilość elementów w kolekcji
+  console.log("");
 
-    console.log("")
+  for (let i = 0; i < td.length; i++) {
+    //pętla po wszystkich td
 
-    for (let i = 0; i < td.length; i++) { //pętla po wszystkich td
+    td[i].style.backgroundColor = "gray"; ////ustawiamy tło komórek na szaro
+    //Bez powyższej reguły nie będzie działało. Czyli samo > td.style.backgroundColor = 'gray'; < nie zadziała, wynika to z faktu (obserwacje własne), że korzystając z: getElementsByTagName, getElementsByClassName, getElementsByName czy querySelectorAll zawsze musimy w nawiasie podać numer elementu, do którego się odnosimy.
 
-        td[i].style.backgroundColor = 'gray'; ////ustawiamy tło komórek na szaro
-        //Bez powyższej reguły nie będzie działało. Czyli samo > td.style.backgroundColor = 'gray'; < nie zadziała, wynika to z faktu (obserwacje własne), że korzystając z: getElementsByTagName, getElementsByClassName, getElementsByName czy querySelectorAll zawsze musimy w nawiasie podać numer elementu, do którego się odnosimy.
-
-        //Pętle po kolekcjach
-        //Spójrz w powyższy kod. Po pobraniu elementów za pomocą metod getElementsByTagName, getElementsByClassName, querySelectorAll robiliśmy po nich pętlę - zupełnie jak po zwykłej tablicy. A jednak zamiast "tablica" notorycznie używam słowa kolekcja. Czemu? Bo kolekcja mimo, że przypomina tablicę nią nie jest. Jak po pobraniu zbadasz taką kolekcję w debugerze okaże się, że ma sporo metod i właściwości, ale i niektórych brak.
-    }
+    //Pętle po kolekcjach
+    //Spójrz w powyższy kod. Po pobraniu elementów za pomocą metod getElementsByTagName, getElementsByClassName, querySelectorAll robiliśmy po nich pętlę - zupełnie jak po zwykłej tablicy. A jednak zamiast "tablica" notorycznie używam słowa kolekcja. Czemu? Bo kolekcja mimo, że przypomina tablicę nią nie jest. Jak po pobraniu zbadasz taką kolekcję w debugerze okaże się, że ma sporo metod i właściwości, ale i niektórych brak.
+  }
 });
-
 
 //Eventy
 
-var spanWeNeedForFocus = document.querySelector('#button-with-click p:first-child span');
+var spanWeNeedForFocus = document.querySelector(
+  "#button-with-click p:first-child span"
+);
 
 function makeChanges() {
+  console.log("click");
 
-    console.log('click');
+  var pToChangeColor = document.querySelector(
+    "#button-with-click p:first-child"
+  );
 
-    var pToChangeColor = document.querySelector('#button-with-click p:first-child');
-
-    spanWeNeedForFocus.removeAttribute('class'); //usuwamy --- class="css-span-events" --- ze span
-    pToChangeColor.style.backgroundColor = 'black';
-    pToChangeColor.style.color = 'white';
-    pToChangeColor.style.fontSize = '25px'; //albo tak
-    //aToChangeColor.style["font-size"] = '25px';//albo tak - w obydwu przypadkach efekt jest ten sam
-
+  spanWeNeedForFocus.removeAttribute("class"); //usuwamy --- class="css-span-events" --- ze span
+  pToChangeColor.style.backgroundColor = "black";
+  pToChangeColor.style.color = "white";
+  pToChangeColor.style.fontSize = "25px"; //albo tak
+  //aToChangeColor.style["font-size"] = '25px';//albo tak - w obydwu przypadkach efekt jest ten sam
 }
 
 spanWeNeedForFocus.onclick = makeChanges;
 
-spanWeNeedForFocus.style.textTransform = 'upperCase';
+spanWeNeedForFocus.style.textTransform = "upperCase";
 
 //------
 
 //Rejestrowania zdarzeń opierającego się na metodzie addEventListener()
 
 function showText(e) {
-
-    console.log('click');
-    e.preventDefault(); //zapobiegnie przeładowaniu strony zobaczymy 'click' w konsoli
-
+  console.log("click");
+  e.preventDefault(); //zapobiegnie przeładowaniu strony zobaczymy 'click' w konsoli
 }
 
-document.getElementById("add-event-link").addEventListener('click', showText);
+document.getElementById("add-event-link").addEventListener("click", showText);
 
 //document.getElementById("add-event-link").removeEventListener('click', showText);//tutaj usuwamy event
 
 //Nie da się usunąć eventów, które zostały dodane za pomocą funkcji anonimowych! Gdyż drugi paramet metody wymaga podania nazwy funkcji.
 
-
-document.getElementById('exampleDiv').addEventListener('click', function (e) {
-
-    alert('Kliknięto div');
-
+document.getElementById("exampleDiv").addEventListener("click", function(e) {
+  alert("Kliknięto div");
 });
 
-document.getElementById('exampleLink').addEventListener('click', function (e) {
-    /*
+document.getElementById("exampleLink").addEventListener("click", function(e) {
+  /*
     Bez dwóch poniższych linijek kliknięcie na link spowoduje wyświetlenie komunikatu
     "Kliknięto link", a następnie komunikatu "Kliknięto div". Dzięki dodaniu tych linijek kodu
     wyświetli się tylko pierwszy komunikat (właściwie to dzięki  e.stopPropagation() tylko, zaś dzięki  e.preventDefault() strona nie odświeży się sama).
     */
-    e.preventDefault(); //Dzięki dodaniu tej linijki, strona nie odświeży się sama
-    e.stopPropagation();
-    alert('Kliknięto link');
+  e.preventDefault(); //Dzięki dodaniu tej linijki, strona nie odświeży się sama
+  e.stopPropagation();
+  alert("Kliknięto link");
 });
 
 //document.getElementById("link").addEventListener('click', function (e) {
@@ -304,23 +309,31 @@ document.getElementById('exampleLink').addEventListener('click', function (e) {
 //
 //});
 
-document.getElementById('blink-link').addEventListener('click', function (e) {
+document.getElementById("blink-link").addEventListener("click", function(e) {
+  e.preventDefault();
+  console.log("Kliknięto link 3");
 
-    e.preventDefault();
-    console.log('Kliknięto link 3');
+  setTimeout(function() {
+    document.getElementById("blink-link").style.cursor = "no-drop"; //zmieniamy kursor na chwilę
+  }, 0);
 
-    setTimeout(function () {
+  setTimeout(function() {
+    document.getElementById("blink-link").style.cursor = "pointer"; //wracamy na poprzedni kursor - nie wiem czy to najlepsza metoda ale działa
+    document.getElementById("blink-link").style.color =
+      "rgba(12, 109, 49, 0.9)";
+  }, 1000);
+  //   console.log(``);
+  //   console.log(this);
+});
 
-        document.getElementById('blink-link').style.cursor = 'no-drop'; //zmieniamy kursor na chwilę 
+//-----------
 
-    }, 0)
+const el = document.createElement("div");
 
-    setTimeout(function () {
+el.id = "myDiv";
 
-        document.getElementById('blink-link').style.cursor = 'pointer'; //wracamy na poprzedni kursor - nie wiem czy to najlepsza metoda ale działa
+el.innerText = "Tekst w divie";
 
-    }, 1000)
+document.getElementsByClassName("image")[0].appendChild(el); //Jeżeli używamy getElementsByClassName, czy getElementsByTagName ---> zawsze w kwadratowych nawiasach musimy określić, którego elementu szukamy
 
-
-
-})
+// console.log(document.getElementsByClassName("image"));

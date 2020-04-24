@@ -1,3 +1,44 @@
+/* Różnice w centrowaniu */
+
 body {
-    background-color: rgba(160, 123, 30, 0.705);
+  background-color: rgba(160, 123, 30, 0.705);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  /* aby użyć height: 100%; należy w html, w tagu otwierającym czyli <html lang="en"> dodać taki zapis ---> style="height:100%"> */
+  /* height: 100vh; */
+  /* height: 100vh; ---> czyli 100 procent wysokości okna przeglądarki */
+
+  /* flex-direction: column; */
+}
+/* 
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+} */
+
+/* centrowanie z flexem */
+.box div {
+  width: 100px;
+  height: 100px;
+  background-color: rgba(0, 0, 0, 0.109);
+  border: 2.5px solid rgba(0, 0, 0, 0.301);
+}
+
+/* stare centrowanie */
+.old-center {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100px;
+  width: 100px;
+  background-color: rgba(0, 128, 0, 0.253);
+  border: 2.5px solid rgba(0, 128, 0, 0.548);
 }
