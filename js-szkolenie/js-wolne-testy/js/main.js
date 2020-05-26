@@ -779,6 +779,11 @@ arrayExample.forEach((element, index, allArray) =>
 console.log(``);
 
 //----------
+
+// console.log($("section div:empty").length);//tak np. możemy sprawdzić ilość pustych div'ów w section
+
+//----------
+
 // Operator warunkowy jest jedynym operatorem w JavaScript, który pobiera trzy argumenty. Operator jest często stosowany jako skrócenie instrukcji if.
 // // Składnia
 // // warunek ? wynik1 : wynik2  jeżeli to prawda to wynik 1 jeżeli fałsz to wynik 2

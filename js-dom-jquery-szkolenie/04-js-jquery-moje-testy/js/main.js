@@ -262,7 +262,7 @@ $(".move-p-text").click(function () {
     color: "green",
     backgroundColor: "rgba(148, 197, 242, 0.4)",
   }); //dodajemy trochę stylowania
-  $(".move-p-text").attr("disabled", "disabled"); //dodajemy atrybut blokujący buttona - wymama dwóch danych w nawiasie
+  $(".move-p-text").attr("disabled", "disabled"); //dodajemy atrybut blokujący buttona - wymaga dwóch danych w nawiasie
 
   $(".button-and-p-div p").each(function () {
     console.log($(this).text()); //this sprawi, że w konsoli zostaną wypisane jeden pod drugim(w osobnych liniach konsoli) wszystkie teksty z elementów <p>, zawartych w <div class="button-and-p-div>
