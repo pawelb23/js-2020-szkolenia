@@ -67,7 +67,7 @@ function weWillReceiveObject(symbolOne, symbolTwo, symbolThree, symbolFour) {
 }
 
 function onlyCallFunctionObject(symbolOne, symbolTwo, symbolThree, symbolFour) {
-  //Funkcja ma tylko trzy parametry, w środku jest właściwie pusta
+  //Funkcja ma tylko cztery parametry, w środku jest właściwie pusta
   weWillReceiveObject.call(this, symbolOne, symbolTwo, symbolThree, symbolFour); //dzięki temu, że pobieramy informacje odnośnie symbolOne, symbolTwo, symbolThree z funkcji weWillReceiveObject (dzięki metodzie call i this) możemy zobaczyć, że onlyCallFunction stało się obiektem z właściwościami i ich wartościami
   console.log("Wszystko działa");
 }
