@@ -2,6 +2,25 @@ console.log(`JS - wolne testy (ćwiczenia)`);
 
 console.log(``);
 
+// Zmiana danych bez mutacji z użyciem metody assign()
+
+var player = { score: 1, name: "Jeff" };
+
+var newPlayer = Object.assign({}, player, { score: 2 });
+
+// Zmienna "player" nie uległa zmianie, a "newPlayer" jest nowym obiektem o wartościach {score: 2, name: 'Jeff'}
+
+// Jeśli używasz składni "operatora rozszczepienia" (ang. spread operator), możesz napisać:
+// var newPlayer = {...player, score: 2};
+
+console.log(player);
+
+console.log(newPlayer);
+
+console.log("");
+
+//--------------
+
 let arrayOne = [`one`, `two`, `three`];
 
 let arrayTwo = [`four`, `five`, `six`];
@@ -601,6 +620,19 @@ console.log(text.match(/dog/g).length); //dzięki 'g' znajdziemy wszystkie wyst�
 console.log(``);
 
 //----------
+// .map()
+const numbers = [1, 2, 3];
+const doubled = numbers.map((x, y) => x * 2 + y); // [2, 4, 6] ---> x to po prostu kolejne elementy z tablicy numbers
+
+// const doubledWithIndex = numbers.map((x, index) => x * 2 + index); // [2, 4, 6] ---> x to po prostu kolejne elementy z tablicy numbers dodajemy do każdej kolejnej wartości jej idnex (czyli y w tym przypadku, to po prostu index każdej kolejnej wartości w tabeli)
+
+console.log(`Nowa tablica po użyciu metody map ---> [${doubled}]`); //ES6
+
+// console.log(`Nowa tablica po użyciu metody map ---> [` + doubled + `]`); //Stary zapis
+
+console.log(``);
+
+//----------
 
 // Tego samego typu zadanie zrobione dwoma sposobami
 
@@ -780,6 +812,28 @@ console.log(``);
 
 //----------
 
+const arrayX = [-1, 1, 2, 3, 4, 5];
+
+const arrayY = [6, 7, 8, 9, 10, 11, 12];
+
+function Adding(x, y) {
+  for (let i = 0; x.length > i || i < y.length; i++) {
+    if (i >= x.length) {
+      x[i] = 0;
+    } else if (i >= y.length) {
+      y[i] = 0;
+    }
+    const result = x[i] + y[i];
+    console.log(result);
+  }
+}
+
+Adding(arrayX, arrayY);
+
+console.log("");
+
+//------------
+
 // console.log($("section div:empty").length);//tak np. możemy sprawdzić ilość pustych div'ów w section
 
 //----------
@@ -827,5 +881,21 @@ console.log(``);
 // // d ---> null
 // console.log(d.hasOwnProperty);
 // undefined, because d doesn't inherit from Object.prototype
+
+//-----------
+
+// Poniżej po odkomentowaniu kilka ciekawych sposobów na wyczyszczenie tablicy A ---> z pytań egzaminacyjnych
+
+// var A = [1, 2, 3, 4];
+
+// A = [];
+
+// A.length = 0;
+
+// A.splice(0, A.length);
+
+// console.log(A);
+
+// console.log(``);
 
 //-----------

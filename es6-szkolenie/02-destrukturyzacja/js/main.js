@@ -48,7 +48,7 @@ const student = { name: "John", age: 24, friends: ["Bob", "Tom"] };
 
 const { age } = student; //wyciągamy wartość z obiektu do zewnętrznej zmiennej
 
-console.log(`Age --->${age}`);
+console.log(`Age ---> ${age}`);
 
 const { name, friends } = student;
 // wypisuje 'John has 2 friends!' do konsoli
@@ -81,10 +81,10 @@ const frontEndPersonObject = {
   name: "Zenon",
   age: 103,
   job: "programista", //"programmer"
-  hobby: "zbieranie znaczków" //"collecting stamps"
+  hobby: "zbieranie znaczków", //"collecting stamps"
 };
 
-const functionPersonInfo = objectInfo => {
+const functionPersonInfo = (objectInfo) => {
   const { name, age, job, hobby } = objectInfo;
   let ageEnding;
   const newRegExp = /[2,3]$/;
@@ -142,13 +142,13 @@ const myObjectDetails = {
   formerJobs: {
     first: "form worker",
     second: "waiter",
-    recent: "copywriter"
+    recent: "copywriter",
   },
-  age: 30
+  age: 30,
 };
 
 const functionPersonInfoObjectInObject = ({
-  formerJobs: { first, second, recent }
+  formerJobs: { first, second, recent },
 }) => {
   console.log(`
   First job --> ${first},
@@ -165,7 +165,7 @@ console.log(``);
 
 //To samo co wyżej tylko możemy wyciągać więcej danych
 
-const functionPersonInfoObjectInObjectTwo = myObjectDetails => {
+const functionPersonInfoObjectInObjectTwo = (myObjectDetails) => {
   const { name, job, formerJobs, age } = myObjectDetails;
   const { first, second, recent } = formerJobs;
   console.log(`

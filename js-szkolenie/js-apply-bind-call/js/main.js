@@ -155,9 +155,9 @@ console.log(``);
 const module = {
   x: 42,
   //   y: 43,
-  getX: function() {
+  getX: function () {
     return this.x;
-  }
+  },
 };
 
 const unboundGetX = module.getX;
@@ -174,9 +174,9 @@ console.log(``);
 const moduleOne = {
   x: 42,
   y: 43,
-  getXY: function() {
+  getXY: function () {
     return this.x + this.y;
-  }
+  },
 };
 
 const boundGetXY = moduleOne.getXY.bind(moduleOne);

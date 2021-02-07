@@ -139,6 +139,8 @@ console.log("");
 
 var testInnerHtml = document.getElementById("link").innerHTML;
 
+// document.getElementById("link").innerHTML = "Nowy tekst, Nowy tekst, Nowy tekst!!!";
+
 console.log("InnerHTML --- " + testInnerHtml);
 
 console.log("");
@@ -204,7 +206,7 @@ console.log("");
 //DOMContentLoaded
 
 //Żeby móc pobierać elementy ze strony, powinny być one już dostępne dla skryptu, czyli powinny być już wczytane przez przeglądarkę. Aby mieć pewność, że kod, który odwołuje się do elementów w kodzie HTML poczeka na ich wczytanie, powinniśmy użyć zdarzenia DOMContentLoaded. Wszystkie skrypty operujące na elementach DOM powinny korzystać z tego eventu.
-document.addEventListener("DOMContentLoaded", function(event) {
+document.addEventListener("DOMContentLoaded", function (event) {
   console.log("DOM został wczytany");
   console.log("Tutaj dopiero wyłapujemy elementy");
   console.log("");
@@ -221,13 +223,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
 //  doSomething();
 //}
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   var btn = document.getElementById("btn");
   console.log(btn.innerText); //Kliknij mnie
   console.log("");
 });
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   const tab = document.getElementById("tabelka");
 
   const td = tab.getElementsByTagName("td"); //pobieramy wszystkie td z tabeli
@@ -286,11 +288,11 @@ document.getElementById("add-event-link").addEventListener("click", showText);
 
 //Nie da się usunąć eventów, które zostały dodane za pomocą funkcji anonimowych! Gdyż drugi paramet metody wymaga podania nazwy funkcji.
 
-document.getElementById("exampleDiv").addEventListener("click", function(e) {
+document.getElementById("exampleDiv").addEventListener("click", function (e) {
   alert("Kliknięto div");
 });
 
-document.getElementById("exampleLink").addEventListener("click", function(e) {
+document.getElementById("exampleLink").addEventListener("click", function (e) {
   /*
     Bez dwóch poniższych linijek kliknięcie na link spowoduje wyświetlenie komunikatu
     "Kliknięto link", a następnie komunikatu "Kliknięto div". Dzięki dodaniu tych linijek kodu
@@ -309,15 +311,15 @@ document.getElementById("exampleLink").addEventListener("click", function(e) {
 //
 //});
 
-document.getElementById("blink-link").addEventListener("click", function(e) {
+document.getElementById("blink-link").addEventListener("click", function (e) {
   e.preventDefault();
   console.log("Kliknięto link 3");
 
-  setTimeout(function() {
+  setTimeout(function () {
     document.getElementById("blink-link").style.cursor = "no-drop"; //zmieniamy kursor na chwilę
   }, 0);
 
-  setTimeout(function() {
+  setTimeout(function () {
     document.getElementById("blink-link").style.cursor = "pointer"; //wracamy na poprzedni kursor - nie wiem czy to najlepsza metoda ale działa
     document.getElementById("blink-link").style.color =
       "rgba(12, 109, 49, 0.9)";
@@ -334,6 +336,10 @@ el.id = "myDiv";
 
 el.innerText = "Tekst w divie";
 
-document.getElementsByClassName("image")[0].appendChild(el); //Jeżeli używamy getElementsByClassName, czy getElementsByTagName ---> zawsze w kwadratowych nawiasach musimy określić, którego elementu szukamy
+document.getElementsByClassName("this-div")[0].appendChild(el); //Jeżeli używamy getElementsByClassName, czy getElementsByTagName ---> zawsze w kwadratowych nawiasach musimy określić, którego elementu szukamy
 
-// console.log(document.getElementsByClassName("image"));
+console.log(document.getElementsByClassName("this-div"));
+
+console.log(``);
+
+//----------

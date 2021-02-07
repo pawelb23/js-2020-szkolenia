@@ -4,6 +4,12 @@ console.log(``);
 
 // Promise - obietnica
 
+// Co to są Obietnice (Promises)?
+
+// Obiekty Promise zostały wprowadzone od ECMAScript 6 jako natywne wsparcie dla operacji asynchronicznych. Dzięki nim można niejako odłożyć wykonanie pewnej logiki na bok i zająć się głównym przepływem aplikacji.
+
+// Przetwarzanie metody asynchronicznej może zakończyć się powodzeniem – wtedy wywołujemy metodę resolve() lub porażką – wtedy metodę reject();
+
 // Promise to obiekt reprezentujący pewne działanie, które może zakończyć się sukcesem, zwracając pożądaną wartość, lub niepowodzeniem, zwracając komunikat błędu.
 
 // Kiedy obietnica zostanie zrealizowana (czyli będzie miała status resolved lub rejected ---> może być jeszcze trzeci scenariusz, sytuacja kiedy obietnica nigdy nie zostaje rozwiązana) mówimy, że została ona ustalona. Kiedy obietnica zostanie ustalona, już nigdy nie może zmienić swojej wartości.

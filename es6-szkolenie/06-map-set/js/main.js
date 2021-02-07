@@ -154,7 +154,7 @@ console.log(``);
 
 //---
 
-// Jeżeli chcemy ponownie zamienić Mapę na obiekt możemy użyć metody fromEnries
+// Jeżeli chcemy ponownie zamienić Mapę na obiekt możemy użyć metody fromEntries
 
 const mapTurnToObject = Object.fromEntries(obiektTurnToMap);
 
@@ -168,7 +168,7 @@ console.log(``);
 
 // Set to nowa wbudowana struktura danych znana z innych języków programowania. Wszystkie wartości przechowywane w obrębie danego zbioru są unikalne.
 
-// Obiekt Set jest kolekcją składającą się z unikalnych wartości, gdzie każda wartość może być zarówno typu prostego jak i złożonego. W przeciwieństwie do mapy jest to zbiór pojedynczych wartości.
+// Obiekt Set jest kolekcją składającą się z unikalnych wartości, gdzie każda wartość może być zarówno typu prostego jak i złożonego. W przeciwieństwie do Mapy jest to zbiór pojedynczych wartości.
 
 // Set / Przykłady
 

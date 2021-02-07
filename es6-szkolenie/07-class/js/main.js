@@ -15,7 +15,7 @@ console.log(``);
 //------------
 
 // Klasy
-// Klasy w JavaScript to w gruncie rzeczy 'opakowanie” na funkcje-konstruktory obiektów. Podobnie jak w innych językach programowania, klasy mogą dziedziczyć po sobie. Wspierane są również pola statyczne.
+// Klasy w JavaScript to w gruncie rzeczy 'opakowanie” na funkcje - konstruktory obiektów. Podobnie jak w innych językach programowania, klasy mogą dziedziczyć po sobie. Wspierane są również pola statyczne.
 
 // Klasy / Przykłady
 class Cat {
@@ -48,11 +48,15 @@ class RussianCat extends Cat {
   meow() {
     console.log(`${this.name} says: myau!`);
   }
+  furColor() {
+    console.log(`${this.name} fur color is - brown`);
+  }
 }
 
 const simba = new RussianCat("Simba");
 // Wypisuje “Simba says: myau!” do konsoli
 simba.meow();
+simba.furColor();
 
 console.log(``);
 

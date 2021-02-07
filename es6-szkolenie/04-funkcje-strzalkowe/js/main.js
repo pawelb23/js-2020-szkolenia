@@ -47,7 +47,7 @@ console.log(``);
 
 const numbersOld = [5, 10, 25, 50, 125];
 
-const oldWayArr = numbersOld.map(function(number, index, oldArray) {
+const oldWayArr = numbersOld.map(function (number, index, oldArray) {
   return console.log(number * 2, index, oldArray); //przy takim zestawieniu parametrów w console.log zobaczymy 1 -> wynik mnożenia, 2. -> index, 3. całą starą tablicę wartości
 }); //tworzymy zmienną newArr i przypisujemy do niej funkcję
 
@@ -55,7 +55,7 @@ oldWayArr; //wywołujemy zmienną, w konsoli
 
 console.log(``);
 
-const oldWayArrTwo = numbersOld.map(function(number) {
+const oldWayArrTwo = numbersOld.map(function (number) {
   //wystarczy pierwszy parametr (index, i oldArray pomijamy bo nie są nam potrzebne w tej prezentacji)
   return number * 2; //przy takim zapisie w returnie otrzymamy po prostu nową tablicę
 });
@@ -76,7 +76,7 @@ console.log(
   `Poniżej, tablica z takimi samymi danymi jak wyżej, uzyskana nowym sposobem, z użyciem funkcji strzałkowej (newWayArr).`
 );
 
-const newWayArr = numbersNew.map(number => number * 2); //w nawiasie od metody map odrazu wstawiamy parametr dalej strzałka i to co chcemy zwrócić (ale nie potrzebujemy tutaj słowa return)
+const newWayArr = numbersNew.map((number) => number * 2); //w nawiasie od metody map odrazu wstawiamy parametr dalej strzałka i to co chcemy zwrócić (ale nie potrzebujemy tutaj słowa return)
 
 console.log(newWayArr);
 
