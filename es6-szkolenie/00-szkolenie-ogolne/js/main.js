@@ -5,7 +5,7 @@ console.log(``);
 // Dwa zapisy poniżej oznaczają dokładnie to samo
 
 // Przykład a
-var addA = function(a, b) {
+var addA = function (a, b) {
   return a + b;
 };
 

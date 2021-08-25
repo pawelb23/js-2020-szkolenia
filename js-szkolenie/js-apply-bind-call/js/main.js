@@ -72,7 +72,7 @@ function Toy(name, price) {
   this.category = "toy";
 }
 
-const cheeseFeta = new Food("feta", 5); //wywołuje funkcje
+const cheeseFeta = new Food("feta", 6); //wywołuje funkcje
 
 // console.log(Food("feta", 5)); //UWAGA!!! Z 'use strict' na górze, wysypie się w konsoli
 //bez słowa new przed Food i bez 'use strict' zwróci cenę, jeżeli zaś napiszemy to co poniżej
@@ -163,7 +163,13 @@ const module = {
 const unboundGetX = module.getX;
 // console.log(unboundGetX()); //Otrzymamy undefined, ale tylko bez 'use strict'
 
+console.log(unboundGetX);
+
+// const boundGetX = unboundGetX.bind(module);
+
 const boundGetX = unboundGetX.bind(module);
+// const boundGetX = module.getX.bind(module); //To to samo co wyżej
+
 console.log(boundGetX());
 // otrzymamy: 42
 
@@ -182,3 +188,198 @@ const moduleOne = {
 const boundGetXY = moduleOne.getXY.bind(moduleOne);
 console.log(boundGetXY());
 // otrzymamy: 85
+
+//-----------------
+
+// --------------
+
+console.log("");
+
+var o = {
+  a: 4,
+  method: function (arg1 = 0, arg2 = 0, arg3 = 0, arg4 = 0) {
+    console.log(this.a + arg1 + arg2 + arg3 + arg4); // wypisuje this oraz przekazane do funkcji argumenty
+  },
+};
+
+var xy = {
+  a: 2,
+};
+
+o.method(1, 2); //7
+o.method.call(xy, 1, 2, 3); //8
+o.method.apply(xy, [1, 2, 3, 4]); //12
+
+console.log("");
+
+var o = {
+  a: 4,
+  method: function () {
+    console.log(this.a, Array.from(arguments)); // wypisuje this oraz przekazane do funkcji argumenty
+  },
+};
+
+console.log(o.a);
+
+var xy = {
+  a: 2,
+};
+
+o.method(1, 2); //  4 [1, 2]
+o.method.call(xy, 1, 2, 3); // 2 [1, 2, 3]
+o.method.apply(xy, [1, 2, 3, 4]); // 2 [1, 2, 3, 4]
+
+//-------------------------
+// WAŻNE!!! Zauważyłem, że metoda bind wymaga utworzenia i wykorzystania nowej zmiennej, co widać w poniższym przykładzie
+
+// <<< const bindowanie = o.method.bind(doBindowania); >>>
+
+// Bindowanie ---> ciężka sprawa trzeba uważać, należy przekazywać bardzo ostrożnie określając bardzo uważnie i dokładnie bindowany obiekt. Poniżej przykłady użycia bind.
+
+let doBindowania = {
+  a: 5,
+};
+
+const bindowanie = o.method.bind(doBindowania);
+
+bindowanie(5, 6);
+
+bindowanie(3, 4, 5);
+
+console.log("");
+
+const m = o.method.bind(o, 1, 2);
+// const mk = o.method.bind(xy, 1, 2);//Ta wersja również zadziała prawidłowo
+
+//-----------------
+
+// Raz zbindowanej funkcji nie można już nadpisać obiektu kontekstowego w ten sam sposób. ---> przykłady poniżej
+
+console.log(`Poniżej >>> m = o.method.bind(o, 1, 2) <<<`);
+
+m();
+
+console.log(`Poniżej >>> m jak wyżej, ale m powiększa się tu o m(3, 4)  <<<`);
+
+m(3, 4); // 4 [1,2,3,4]
+
+setTimeout(function () {
+  console.log(
+    `
+    Poniżej >>> m ponownie podstawowe (wszystko wynika oczywiście z użycia metody bind wcześniej ---- Tu użycie z setTimeout <<<
+      `
+  );
+});
+
+setTimeout(m); // 4 [1,2]
+// setTimeout(m, 5000); // 4 [1,2] //Zadziała po 5 sekundach (tylko jeden raz)
+// setInterval(m, 5000); // 4 [1,2] //Zadziała co 5 sekund
+
+console.log(
+  `Poniżej >>> m2 powiększa się o m i o wynikające z bindowania 3,4 oraz dodajemy m2(5, 6)  <<<`
+);
+
+const m2 = m.bind(o, 3, 4);
+m2(5, 6); // 4 [1,2,3,4,5,6]
+
+console.log("");
+
+// =============
+
+// function Clazz(a, b) {
+//   this.a = 1;
+//   this.b = 2;
+
+//   return this;
+// }
+
+// Clazz.prototype.method = function () {
+//   l("Prototype", this);
+// };
+
+// const toBind = { c: 3 };
+
+// const instance = new Clazz(); // this === nowy obiekt
+// const secondInstance = new (Clazz.bind(toBind))(); // this === nowy obiekt
+
+// // const thirdInstance = new Clazz();
+
+// // console.log(secondInstance);
+
+// // console.log(thirdInstance);
+
+// console.log(secondInstance);
+
+// console.log(typeof Clazz.prototype.constructor);
+// console.log(typeof secondInstance);
+
+// console.log("");
+
+// // // =====================
+
+// Poniżej przekazujemy do this wartość za pomocą bind, tworzymy także tablicę z argumentami
+
+function bindFunctionWithArray() {
+  console.log(this, Array.from(arguments));
+}
+
+bindFunctionWithArray();
+
+const bindWithArray = bindFunctionWithArray.bind(5);
+
+bindWithArray();
+
+bindWithArray(6, 7);
+
+console.log("");
+//-------------------
+
+function bindFunction(a, b) {
+  console.log(this, a, b);
+}
+
+const giveMeThisData = bindFunction.bind(5);
+
+giveMeThisData();
+
+giveMeThisData(6, 7);
+
+//------------------
+
+// Wykorzystanie metody apply()
+
+// Z metodą apply() funkcja działa dobrze nawet przy operatorach reszty i rozproszenia. Przykład poniżej.
+
+let newArrayBind = [3, 7, 15];
+
+function avgFromArray(...args) {
+  var sum = 0;
+  for (let value of args) {
+    sum += value;
+  }
+  return sum / args.length;
+}
+
+let newAverage = avgFromArray.apply(null, [1, 2, 3, 4, 5]);
+
+console.log(newAverage);
+
+//===
+
+// Wykorzystanie metody call()
+
+let newAverage1 = avgFromArray.call(null, 2, 4, 6, 8, 10);
+
+console.log(newAverage1);
+
+//===
+
+// Wykorzystanie metody bind()
+
+let newNumberFromBind = avgFromArray.bind();
+
+console.log(newNumberFromBind(2, 3, 5, 10));
+
+console.log("");
+
+//============

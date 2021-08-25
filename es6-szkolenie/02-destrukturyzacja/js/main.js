@@ -79,7 +79,7 @@ console.log("%s has %d friends!", firstName, friendsAlias.length); //%s odnosi s
 
 const frontEndPersonObject = {
   name: "Zenon",
-  age: 103,
+  age: 223,
   job: "programista", //"programmer"
   hobby: "zbieranie znaczków", //"collecting stamps"
 };
@@ -87,10 +87,16 @@ const frontEndPersonObject = {
 const functionPersonInfo = (objectInfo) => {
   const { name, age, job, hobby } = objectInfo;
   let ageEnding;
-  const newRegExp = /[2,3]$/;
+  const newRegExp = /(2|3|4)$/;
+  const newRegExpTwo = /(12|13|14)$/; //sprawdzamy 12 lub | 13 lub | 14 pasuje, musi być tu nawias () bez tego dolar $ nie obejmie wszystkiego, więc nie zadziała to prawidłowo
+  console.log(newRegExpTwo.test(age));
+  console.log(newRegExp.test(age));
   if (age === 1) {
     ageEnding = "rok";
-  } else if (newRegExp.test(age)) {
+  } else if (
+    newRegExp.test(age) &&
+    newRegExp.test(age) !== newRegExpTwo.test(age)
+  ) {
     ageEnding = "lata";
   } else {
     ageEnding = "lat";
@@ -114,10 +120,14 @@ console.log(``);
 const functionPersonInfoTwo = ({ name, age, job, hobby }) => {
   // const { name, age, job, hobby } = objectInfo;
   let ageEnding;
-  const newRegExp = /[2,3]$/;
+  const newRegExp = /(2|3|4)$/;
+  const newRegExpTwo = /(12|13|14)$/; //sprawdzamy 12 lub | 13 lub | 14 pasuje, musi być tu nawias () bez tego dolar $ nie obejmie wszystkiego, więc nie zadziała to prawidłowo
   if (age === 1) {
     ageEnding = "rok";
-  } else if (newRegExp.test(age)) {
+  } else if (
+    newRegExp.test(age) &&
+    newRegExp.test(age) !== newRegExpTwo.test(age)
+  ) {
     ageEnding = "lata";
   } else {
     ageEnding = "lat";

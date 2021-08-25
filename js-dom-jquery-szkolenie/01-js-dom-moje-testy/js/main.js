@@ -108,6 +108,7 @@ var newTestValue = (document.querySelector(".second-class-test").value =
 //console.log("");
 
 var comment = document.createComment("To jest nowy komentarz"); //tworzy komentarz
+var commentTwo = document.createComment("To jest nasz nowy (drugi) komentarz"); //tworzy komentarz
 
 document
   .getElementById("container-two")
@@ -125,7 +126,7 @@ console.log("");
 
 var addCommentToElementP = document
   .querySelector("#container-two span:last-child p")
-  .appendChild(comment); //dodajemy komentarz do p znajdującego się w ostatnim span - div'a id="container-two"
+  .appendChild(commentTwo); //dodajemy komentarz do p znajdującego się w ostatnim span - div'a id="container-two"
 
 console.log(document.querySelector("#container-two span:last-child"));
 

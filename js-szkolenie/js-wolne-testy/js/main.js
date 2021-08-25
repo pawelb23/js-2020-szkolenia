@@ -406,6 +406,7 @@ let arrayForReduce = arrayStart.reduce(function (
 ) {
   console.log(index, currentValue); //odczyta index i jego wartość
   console.log(array); // pokaże całą tablicę
+  // console.log(array, previousValue); // pokaże całą tablicę i wartości dodawane w kolejnych krokach ---> pierwsza wartość to 25 i do niej dodawane są wartości z tablicy
   return previousValue + currentValue;
 }, 25);
 
@@ -834,7 +835,9 @@ console.log("");
 
 //------------
 
-// console.log($("section div:empty").length);//tak np. możemy sprawdzić ilość pustych div'ów w section
+// console.log($("section div:empty").length); //tak np. możemy sprawdzić ilość pustych div'ów w section --- coś tu nie do końca działa
+
+console.log("");
 
 //----------
 
@@ -899,3 +902,821 @@ console.log("");
 // console.log(``);
 
 //-----------
+
+// function Clazz(a, b) {
+//   this.a = 1;
+//   this.b = 2;
+
+//   return this;
+// }
+
+// Clazz.prototype.method = function () {
+//   l("Prototype", this);
+// };
+
+// const toBind = { c: 3 };
+
+// const instance = new Clazz(); // this === nowy obiekt
+// const secondInstance = new (Clazz.bind(toBind))(); // this === nowy obiekt
+
+// // const thirdInstance = new Clazz();
+
+// // console.log(secondInstance);
+
+// // console.log(thirdInstance);
+
+// console.log(secondInstance);
+
+// console.log(typeof Clazz.prototype.constructor);
+// console.log(typeof secondInstance);
+
+// console.log("");
+
+// // // =====================
+
+// // function testName(name) {
+// //   return name;
+// // }
+
+// // // console.log(typeof testName.prototype); // zwraca 'object'
+// // // console.log(typeof testName.prototype.constructor); // zwraca 'function'
+// // // console.log(testName.prototype.constructor("abc")); // zwraca 'abc'
+// // // console.log(testName("abc"));
+
+// // console.log(typeof this.prototype); //undefined
+// // console.log(this); //window
+
+// // console.log("");
+
+// // toLocaleTimeString();
+
+// //------------------
+
+// // Pracuję nad poniższym
+
+// // function Person() {
+// //   var that = this;
+// //   that.age = 0;
+
+// //   setInterval(
+// //     function growUp() {
+// //       // The callback refers to the `that` variable of which
+// //       // the value is the expected object.
+// //       that.age++;
+// //     },
+// //     1000,
+// //     console.log(that.age++)
+// //   );
+// // }
+
+// // console.log("");
+
+// console.log(new Person());
+
+// ===============
+
+function Base(name) {
+  this.name = name;
+}
+
+Base.prototype.getName = function () {
+  return this.name + " 2.albo nie działa";
+};
+
+var test = new Base("1.działa");
+
+console.log(test.getName());
+
+// ciekawostka: właściwość name też jest dostępna
+//document.getElementById('result').innerHTML = test.name;
+
+// ============
+
+console.log("");
+
+function alfabet() {
+  return this;
+}
+
+console.log(alfabet()); //zwróci obiekt window
+
+console.log(typeof alfabet.prototype);
+
+const newAlfabet = alfabet.bind(alfabet(), "abc");
+
+console.log(newAlfabet());
+
+//--------
+
+const numbersOld = [5, 10, 25, 50, 125];
+
+const oldWayArr = numbersOld.map(function (number, index, oldArray) {
+  return console.log(number * 2, index, oldArray); //przy takim zestawieniu parametrów w console.log zobaczymy 1 -> wynik mnożenia, 2. -> index, 3. całą starą tablicę wartości
+}); //tworzymy zmienną newArr i przypisujemy do niej funkcję
+
+oldWayArr; //wywołujemy zmienną, w konsoli
+
+console.log(``);
+
+const a = "5abc7";
+
+const b = 3;
+
+const dodawanie = (c, d) => Number.parseInt(c) + d;
+
+console.log(dodawanie(a, b));
+
+console.log(isNaN("hello"));
+
+var toFloat;
+
+var floatValue = parseFloat(toFloat);
+
+function findMeFloat(floatValue) {
+  if (isNaN(floatValue)) {
+    // notFloat();
+    console.log("1");
+  } else {
+    // isFloat();
+    console.log("0");
+  }
+}
+
+toFloat = 5;
+
+findMeFloat(toFloat);
+
+toFloat = "abc";
+
+findMeFloat(toFloat);
+
+toFloat = "10x0abc";
+
+findMeFloat(toFloat);
+
+console.log("abc".length);
+
+console.log("");
+
+// ===================
+
+const newSentence = "abc";
+
+const firstSentence = newSentence.charAt(0).toUpperCase();
+
+const secondSentence = newSentence.substring(1, 3);
+
+console.log(firstSentence + secondSentence);
+
+console.log("");
+
+const numberBoard = [1, 2, 3, 4, 5]; //Array
+
+const arrayRandomIndex = Math.floor(Math.random() * numberBoard.length);
+
+const randomNumber = numberBoard[arrayRandomIndex];
+
+console.log(`losowy index - ${arrayRandomIndex}
+liczba w tablicy pod indexem - ${randomNumber}`);
+
+console.log("");
+
+// ===================
+
+const car = { make: "Honda", model: "Accord", year: 1998 };
+
+console.log("make" in car);
+// expected output: true
+
+delete car.make;
+
+console.log(car);
+
+if ("make" in car === false) {
+  car.make = "Suzuki";
+}
+
+console.log(car.make);
+// expected output: "Suzuki"
+
+console.log("");
+
+// =================
+
+console.log(2 ** 4); //2 do potęgi 4
+
+console.log(Math.pow(2, 4)); // również 2 do potęgi 4
+
+console.log("");
+
+// =================
+
+// Left shift  (a << b)
+
+// np.
+
+// 5 << 2 ---> czyli 5 * (2 ** 2) = 5 * (4) = 20
+
+// 9 << 3 ---> czyli 9 * (2 ** 3) = 9 * (8) = 72
+
+// =================
+
+// Right shift (a >> b)
+
+// 5 >> 2 ---> czyli 5 / (2 ** 2) = 5 / (4) = 1
+
+console.log(` ${5 >> 2}`);
+
+// -5 >> 2 ---> czyli -5 / (2 ** 2) = -5 / (4) = -1.25 (chyba zaokrąglamy w górę, dlatego wynikiem będzie --->  -2)
+
+console.log(-5 >> 2);
+
+console.log("");
+
+// ================
+
+// Wbudowana funkcja isNaN():
+
+console.log(isNaN(NaN));
+console.log(isNaN(2));
+
+console.log("");
+
+// Infinity, -Infinity oraz NaN wykorzystane mogą być do testów za pomocą wbudowanej funkcji isFinite():
+
+isFinite(1); // true
+isFinite(1 / 0); // false
+isFinite(-Infinity); // false
+isFinite(Infinity); // false
+isFinite(NaN); // false
+
+// ===============
+
+// parseInt, parseFloat
+
+console.log(parseInt(`10.2abc`)); // 10
+console.log(parseFloat(`10.2abc`)); // 10.2
+
+console.log("");
+
+// ===============
+
+//Sprawdzamy czy coś jest tablicą, obiektem, zmienną typu null, itp.
+
+let arrayToCheck = [null];
+
+// console.log(arrayToCheck); //tablica, która ma tylko jedną wartość - null
+
+let objectToCheck = {};
+
+const valueNullToCheck = null;
+
+console.log(Object.prototype.toString.call(arrayToCheck));
+console.log(Object.prototype.toString.call(objectToCheck));
+console.log(Object.prototype.toString.call(valueNullToCheck));
+
+console.log("");
+
+//================
+
+// Operatory +=, -=, *=, /=
+
+var randomNumberVariable;
+
+function addVariable(randomNumberVariable) {
+  randomNumberVariable += 5;
+
+  return randomNumberVariable;
+}
+
+console.log(addVariable(20));
+
+function splitVariable(randomNumberVariable) {
+  randomNumberVariable /= 5;
+
+  return randomNumberVariable;
+}
+
+console.log(splitVariable(25));
+
+console.log(``);
+
+//===============
+
+let variableToString = 1;
+
+// console.log(variableToString.length);
+
+console.log(variableToString.toString() + 52); //wynik to 152 bo jeden zamieniamy na string wcześniej czyli "1" + 52 = 152
+
+console.log("");
+
+//===============
+
+// Pętla >> while <<
+
+let variableNumberInWhile = 0;
+
+while (variableNumberInWhile <= 5) {
+  console.log(variableNumberInWhile);
+
+  variableNumberInWhile++;
+}
+
+console.log("");
+
+// Pętla >> do while <<
+
+let variableNumberInDoWhile = 1;
+
+do {
+  console.log(variableNumberInDoWhile); //zostanie wykonany
+
+  variableNumberInDoWhile++;
+} while (variableNumberInDoWhile < 1); //będzie wykonywany dopóki nie dojdzie do tego momentu
+
+console.log("");
+
+//=================
+
+var ageNumber = 20;
+
+var allowed =
+  ageNumber > 18
+    ? `${ageNumber} jest większe od 18`
+    : `${ageNumber} jest mniejsze od 18`;
+
+console.log(allowed);
+
+console.log("");
+
+//=================
+
+// typeof - przykłady
+
+var objectAutoExampleForTypeOf = {
+  marka: "Ford",
+  model: "Fiesta",
+  detale: {
+    kolor: "grafitowy",
+    konieMechaniczne: 96,
+  },
+};
+
+const ageExampleForTypeOf = 5;
+
+const stringExampleForTypeOf = "String";
+
+console.log(typeof objectAutoExampleForTypeOf);
+
+console.log(typeof ageExampleForTypeOf);
+
+console.log(typeof stringExampleForTypeOf);
+
+console.log("");
+
+//===============
+
+// Obiekt - dostęp do obiektu
+
+var autoObject = {
+  marka: "Ford",
+  model: "Fiesta",
+  detale: {
+    kolor: "grafitowy",
+    konieMechaniczne: 96,
+  },
+};
+
+console.log(autoObject.detale.konieMechaniczne); //1 sposób - dostajemy się do obiektu ---> ten sposób jest bardziej popularny
+
+console.log(autoObject[`detale`][`kolor`]); //2 sposób - dostajemy się do obiektu ---> sposób rzadko używany
+
+console.log("");
+
+// Poniższy przykład tworzy prototyp obiektu Person i jego instancję - newPerson.
+
+function Person(imie, wiek) {
+  this.imie = imie;
+  this.wiek = wiek;
+}
+
+// Definiowanie obiektu
+var newPerson = new Person("Marek", 24);
+// Stworzyliśmy nową osobę o imieniu 'Marek' i wieku 24 lat.
+
+// console.log(newPerson); //Obiekt
+
+// console.log("");
+
+// var personArray = [newPerson, "abc"];
+
+// console.log(personArray);
+
+function showRandomPerson() {
+  const newRandomPersonHeniek = new Person("Heniek", 50);
+  const newRandomPersonJola = new Person("Jolka", 32);
+  const newRandomPersonZyzio = new Person("Zyzio", 10);
+  const newRandomPersonMiecia = new Person("Miecia", 45);
+  const newRandomPersonWiesiek = new Person("Wiesiek", 60);
+
+  const randomPersonArray = [
+    newRandomPersonHeniek,
+    newRandomPersonJola,
+    newRandomPersonZyzio,
+    newRandomPersonMiecia,
+    newRandomPersonWiesiek,
+  ];
+
+  let randomPersonIndeks = Math.floor(Math.random() * randomPersonArray.length);
+
+  let randomlySelectedPerson = randomPersonArray[randomPersonIndeks];
+
+  // return randomlySelectedPerson.imie; //zwracamy tylko imię z losowego obiektu
+  return randomlySelectedPerson; //zwracamy pełny losowy obiekt
+}
+
+console.log(showRandomPerson());
+
+console.log("");
+
+// Do właściwości stworzonego obiektu można uzyskać dostep na dwa sposoby:
+
+// notacja kropkowa ( dot notation )
+// obj.name = 'Simon';
+// var name = obj.name;
+
+// oraz...
+
+// Użycie poniższej metody zapobiega zastosowaniu niektórych mechanizmów JavaScript i procesów minifikacji. Może też być używany do ustawiania i pobierania własności z nazwami wykorzystującymi słowa zastrzeżone:
+
+// obj.for = 'Simon'; // Syntax error, ponieważ 'for' jest zastrzeżone
+// obj['for'] = 'Simon'; // kod działa
+
+//===============
+
+// Metoda toString w Tablicy
+
+const fruitsArray = ["Banana", "Orange", "Apple", "Mango"];
+
+const toStringFruitsArray = fruitsArray.toString();
+// const toStringFruitsArray = fruitsArray.toLocaleString(); // Działanie jak wyżej
+
+console.log(fruitsArray); //orginalna tablica
+
+console.log(toStringFruitsArray); //nowa tablica stworzona z użyciem Metody toString
+
+console.log("");
+
+var newTodayDate = new Date();
+
+console.log(newTodayDate + "<br />");
+console.log(newTodayDate.toString() + "<br />");
+console.log(newTodayDate.toLocaleString());
+
+console.log("");
+//===============
+
+// Funkcje
+
+function addArrayArguments() {
+  // Zostaną tu dodane wszystkie argumenty czyli (1, 2, 3, 4, 5)
+  let sum = 0;
+
+  // console.log(arguments);
+
+  for (var i = 0, j = arguments.length; i < j; i++) {
+    sum += arguments[i];
+
+    // console.log(arguments[i]);
+  }
+
+  console.log(sum / j); // wyliczamy średnią z sumy Tablicy
+
+  return (newAddedArray = [i, i + j, sum, i + sum, i + j + sum]);
+
+  // console.log(newAddedArray);
+}
+
+console.log(addArrayArguments(1, 2, 3, 4, 5)); // 15
+
+console.log("");
+
+//===============
+
+// Sprawdzimy sobie Medianę
+
+const arrayToCheckMedian = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+function medianFunction(medianArguments) {
+  if (medianArguments.length % 2 == 0) {
+    return (
+      (medianArguments[medianArguments.length / 2 - 1] +
+        medianArguments[medianArguments.length / 2]) /
+      2
+    );
+  } else {
+    return medianArguments[Math.floor(medianArguments.length / 2)];
+  }
+}
+
+console.log(medianFunction(arrayToCheckMedian));
+
+console.log("");
+
+//==============
+
+// forEach
+
+["dog", "cat", "hen"].forEach(function (currentValue, index, array) {
+  document.querySelector(".box div").classList.add("my-style");
+
+  document.querySelector(".my-style").style.textAlign = "center";
+
+  document.querySelector(".my-style").style.fontWeight = "bold";
+
+  document.querySelector(
+    ".my-style"
+  ).innerHTML += `${index}: ${currentValue} || `;
+});
+
+//=============
+
+// for/of
+
+const carsArray = ["BMW", "Volvo", "Mini"];
+let oneCar;
+
+for (oneCar of carsArray) {
+  document.querySelector(".my-style").innerHTML += `${oneCar} || `;
+}
+
+//=============
+
+// for/in
+
+function forInFunction() {
+  var person = { fname: "John", lname: "Doe", age: 25 };
+
+  var textInformation = "";
+  var xPerson;
+  for (xPerson in person) {
+    textInformation += person[xPerson] + " ";
+  }
+  document.querySelector(".person-info").innerHTML = textInformation;
+}
+
+forInFunction();
+
+//============
+
+const numbersReduce = [1, 2, 3, 4, 5];
+
+const sumReduce = numbersReduce.reduce(
+  (total, currentValue) => total + currentValue
+);
+
+console.log(sumReduce);
+
+const sumSecondReduce = numbersReduce.reduce((total, currentValue) => {
+  console.log("total", total);
+  console.log("currentValue", currentValue);
+  return total + currentValue;
+}, 0);
+
+console.log(sumSecondReduce);
+
+console.log("");
+
+//============
+
+function addingArrayAndIndeksValues(addArray) {
+  var newArrayIndeksAndNumbers = [];
+
+  var sumAll = 0;
+
+  for (let i = 0; addArray.length > i; i++) {
+    sumAll += i + addArray[i];
+
+    newArrayIndeksAndNumbers.push(i + addArray[i]);
+  }
+  console.log(newArrayIndeksAndNumbers);
+  console.log(sumAll);
+}
+
+addingArrayAndIndeksValues(numbersReduce);
+
+console.log("");
+
+//===============
+
+// Wykorzystanie metody apply()
+
+// Z metodą apply() funkcja działa dobrze nawet przy operatorach reszty i rozproszenia. Przykład poniżej.
+
+let newArrayBind = [3, 7, 15];
+
+function avgFromArray(...args) {
+  var sum = 0;
+  for (let value of args) {
+    sum += value;
+  }
+  return sum / args.length;
+}
+
+let newAverage = avgFromArray.apply(null, [1, 2, 3, 4, 5]);
+
+console.log(newAverage);
+
+//===
+
+// Metoda call()
+
+let newAverage1 = avgFromArray.call(null, 2, 4, 6, 8, 10);
+
+console.log(newAverage1);
+
+//===
+
+// Metoda bind()
+
+let newNumberFromBind = avgFromArray.bind();
+
+console.log(newNumberFromBind(2, 3, 5, 10));
+
+console.log("");
+
+//=============
+
+var aaNumber = 1;
+var bbNumber = 2;
+
+(function () {
+  //---> samowywołująca się funkcja (od razu się wywołuje), uniemożliwia tworzenie się zmiennych w zasięgu globalnym. Taka funkcja może mieć także nazwę, ale jej nazwa nie będzie widziana po za ciałem funkcji. Tzn. nie da się jej wywołać później w dowolnym miejscu.
+  var bbNumber = 3;
+  aaNumber += bbNumber;
+  console.log("Samowywołująca się funkcja!");
+  console.log("");
+})();
+
+// function abNumbers() { //działa jak powyższa funkcja, po prostu tradycyjny (stary) sposób utworzenia i wywołania funkcji
+//   var bbNumber = 3;
+//   aaNumber += bbNumber;
+// }
+
+// abNumbers();//wywołujemy powyższą funkcję
+
+console.log(aaNumber); // 4
+console.log(bbNumber); // 2
+
+console.log("");
+
+//=============
+
+var p = document.createElement("p");
+p.textContent = "Once upon a time…";
+
+console.log(p.nodeType);
+
+console.log(document.querySelector(".person-info").nodeType);
+
+console.log("");
+
+//=============
+
+document.querySelector(".person-info").appendChild(p);
+
+//=============
+
+// Słowo kluczowe new jest silnie związane z this
+
+function Person(first, last) {
+  this.first = first;
+  this.last = last;
+  this.fullName = function () {
+    return this.first + " " + this.last;
+  };
+  this.fullNameReversed = function () {
+    return this.last + ", " + this.first;
+  };
+}
+var sPerson = new Person("Simon", "Willison"); // tworzymy zupełnie nowy obiekt, a następnie wywołuje określoną funkcję z this ustawionym na ten nowy obiekt
+// Funkcje zaprojektowane do wywoływania przez new nazywane są funkcjami konstruktora.
+// Powszechną praktyką jest nazywanie takich funkcji z dużej litery jako przypomnienie o użyciu ich new.
+
+console.log(sPerson);
+
+console.log(sPerson.fullName());
+
+console.log(sPerson.fullNameReversed());
+
+console.log("");
+
+function FunctionWithPrototype(first, last) {
+  this.first = first;
+  this.last = last;
+}
+FunctionWithPrototype.prototype.fullNameWithPrototype = function () {
+  return this.first + " " + this.last;
+};
+FunctionWithPrototype.prototype.fullNameReversedWithProt = function () {
+  return this.last + ", " + this.first;
+};
+
+var sPrototypePerson = new FunctionWithPrototype("Rob", "Modd");
+
+console.log(sPrototypePerson);
+
+console.log(sPrototypePerson.fullNameWithPrototype());
+console.log(sPrototypePerson.fullNameReversedWithProt());
+
+console.log(new FunctionWithPrototype("Mark", "Hoose").fullNameWithPrototype());
+
+console.log("");
+
+//=============
+
+function trivialNew(constructor, ...args) {
+  var o = {}; // Create an object
+  constructor.apply(o, args);
+  return o;
+}
+
+var bill = trivialNew(Person, "William", "Orange"); // To właściwie to samo co poniżej:
+// var bill = new Person('William', 'Orange'); //
+
+console.log(bill);
+
+bill = trivialNew(FunctionWithPrototype, "William", "Orange");
+
+console.log(bill);
+
+console.log("");
+
+//============
+
+// Inner functions (funkcje wewnętrzne) ---> callback
+
+// Takie funkcje pozwalają używać zmiennych lokalnych widocznych wewnątrz funkcji co jest zazwyczaj lepsze niż używanie zmiennych o zasięgu globalnym.
+
+function parentFunc() {
+  var a = 1;
+
+  function nestedFunc() {
+    var b = 4; // parentFunc can't use this
+    return a + b;
+  }
+  return nestedFunc(); // 5
+}
+
+console.log(parentFunc());
+
+console.log("");
+
+//============
+
+// Domknięcia
+
+function makeAdder(aClousers) {
+  console.log(aClousers);
+  return function (bClousers) {
+    console.log(aClousers);
+    console.log(bClousers);
+    return console.log(aClousers + bClousers);
+  };
+}
+var xClousers = makeAdder(5);
+var yClousers = makeAdder(20);
+xClousers(6); // 11
+yClousers(7); // 27
+
+// var zClousers = makeAdder(7);
+// var zClousers;
+
+// zClousers(5).makeAdder(5);
+
+console.log("");
+
+//============
+
+var n = 10;
+
+function counDown() {
+  setInterval(function () {
+    if (n == 10) {
+      console.log(`${n}`);
+      document.querySelector(".person-info").innerHTML = `${n}`;
+
+      n -= 1;
+    } else if (n >= 0) {
+      console.log(` ${n}`);
+      document.querySelector(".person-info").innerText = `\xa0 ${n}`; // \xa0 dodaje wolną przestrzeń przed tekstem. Jeżeli chcemy np. wstawić 5 razy wolną przestrzeń musimy zrobić coś takiego ---> `\xa0\xa0\xa0\xa0\xa0`
+
+      n -= 1;
+    }
+  }, 1000);
+}
+
+counDown();
+
+//=============

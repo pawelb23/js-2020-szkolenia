@@ -15,7 +15,7 @@ console.log(``);
 
 // Przykład 1. callback z funkcją wbudowaną
 
-setTimeout(function() {
+setTimeout(function () {
   //setTimeout (funkcja wbudowana) - jest tu przykładem funkcji wyższego rzędu, zaś w niej jako pierwszy parametr mamy inną funkcję, która to w tym przypadku jest funkcją typu callback
   console.log("Callback --- przykład 1");
 }, 2000);
@@ -88,7 +88,7 @@ function clickFunction() {
 const arrayAge = [6, 10, 40, 4, 15, 20, 17];
 
 console.log(
-  arrayAge.sort(function(firstNumber, secondNumber) {
+  arrayAge.sort(function (firstNumber, secondNumber) {
     // console.log(firstNumber + ` ` + secondNumber);
     return firstNumber - secondNumber; //UWAGA!!! jeżeli odejmiemy liczbę pierwszą od drugiej otrzymamy tablicę od najmniejszej liczby do największej, zaś jeżeli odejmiemy liczbę drugą od pierwszej otrzymamy liczby od największje do najmniejszej.
   })
@@ -108,7 +108,7 @@ const citiesArray = ["warszawa", "kraków", "poznań", "szczecin"];
 // Co robi metoda map?
 // Metoda map() ---> bierze każdy element tablicy i wykonuje na nim callback
 
-const citiesToUpper = citiesArray.map(function(oneCity) {
+const citiesToUpper = citiesArray.map(function (oneCity) {
   return oneCity.toUpperCase();
 });
 
