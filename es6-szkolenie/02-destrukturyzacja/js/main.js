@@ -79,7 +79,7 @@ console.log("%s has %d friends!", firstName, friendsAlias.length); //%s odnosi s
 
 const frontEndPersonObject = {
   name: "Zenon",
-  age: 223,
+  age: 115,
   job: "programista", //"programmer"
   hobby: "zbieranie znaczków", //"collecting stamps"
 };
@@ -198,3 +198,80 @@ let bar = 23;
 [bar, foo] = [foo, bar];
 // wypisuje `foo = 2, bar = 1` do konsoli
 console.log(`foo = %d, bar = %s`, foo, bar);
+
+console.log(``);
+
+//-----------
+
+const alphabetArray = ["A", "B", "C", "D", "E", "F"];
+
+const numbersArray = ["1", "2", "3", "4", "5", "6"];
+
+const aAa = alphabetArray[0];
+
+console.log(aAa);
+
+const [aAlp, bAlp, cAlp] = alphabetArray;
+
+console.log(aAlp, bAlp);
+console.log(cAlp);
+
+console.log(``);
+
+//Spread Operator
+
+const [aAlp1, , cAlp1, , ...rest] = alphabetArray; // rest (nazwa dowolna np. może być po polsku "reszta") ---> to właśnie spread operator
+
+console.log(aAlp1);
+
+console.log(cAlp1);
+
+console.log(rest);
+
+console.log("");
+
+const [aNumb1, bNumb1, , dNumb1] = numbersArray;
+
+const mixingArrayAlphaNumb = [aNumb1, aAlp1, bNumb1, cAlp1];
+
+console.log(mixingArrayAlphaNumb);
+
+console.log(``);
+
+//------------
+
+const newAlphabetNumbersArray = [...alphabetArray, ...numbersArray]; //używamy spread operator
+const newConcatenationAlphabetNumbersArray = alphabetArray.concat(numbersArray); //wynik taki sam jak wyżej tyle, że używamy metody concat()
+
+console.log(`Poniżej nowa połączona tablica dwoma sposobami`);
+console.log(newAlphabetNumbersArray);
+console.log(newConcatenationAlphabetNumbersArray);
+
+console.log(``);
+
+//-------------
+
+function sumAndMultiply(aA, bB) {
+  // return [aA + bB, aA * bB, aA / bB];
+  return [aA + bB, aA * bB];
+}
+
+console.log(sumAndMultiply(2, 3));
+
+const [sumAB, multiplAB, divisionAB = "no data"] = sumAndMultiply(3, 5); //Jeżeli brak będzie trzeciej wartości to ta wartość będzie wartością domyślną "no data"
+
+console.log(sumAB);
+console.log(multiplAB);
+console.log(divisionAB);
+
+//--------------
+
+const newArrayForNewExercise = ["First Date", "Second Date", "Third Date"];
+
+function sumArrayDate([dateOne, dateTwo, dateThree]) {
+  console.log(`<<<${dateOne}, ${dateTwo}, ${dateThree}>>>`);
+}
+
+sumArrayDate(newArrayForNewExercise);
+
+//--------------

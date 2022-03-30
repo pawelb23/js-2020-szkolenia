@@ -52,3 +52,4 @@ console.log(show(2, 3, 45, 1, 658)); //dowolne argumenty
 console.log(``);
 
 //-------------
+

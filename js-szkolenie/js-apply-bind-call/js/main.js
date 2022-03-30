@@ -126,19 +126,19 @@ console.log(new FoodTwo("cheese", 5).name);
 
 console.log(``);
 
-function weWillReceiveObject(symbolOne, symbolTwo, symbolThree) {
+function WeWillReceiveObject(symbolOne, symbolTwo, symbolThree) {
   this.symbolOne = symbolOne;
   this.symbolTwo = symbolTwo;
   this.symbolThree = symbolThree;
 }
 
-function onlyCallFunctionObject(symbolOne, symbolTwo, symbolThree) {
+function OnlyCallFunctionObject(symbolOne, symbolTwo, symbolThree) {
   //Funkcja ma tylko trzy parametry, w środku jest właściwie pusta
-  weWillReceiveObject.call(this, symbolOne, symbolTwo, symbolThree); //dzięki temu, że pobieramy informacje odnośnie symbolOne, symbolTwo, symbolThree z funkcji weWillReceiveObject (dzięki metodzie call i this) możemy zobaczyć, że onlyCallFunction stało się obiektem z właściwościami i ich wartościami
+  WeWillReceiveObject.call(this, symbolOne, symbolTwo, symbolThree); //dzięki temu, że pobieramy informacje odnośnie symbolOne, symbolTwo, symbolThree z funkcji weWillReceiveObject (dzięki metodzie call i this) możemy zobaczyć, że onlyCallFunction stało się obiektem z właściwościami i ich wartościami
   console.log("Funkcja działa");
 }
 
-var newSymbolsObject = new onlyCallFunctionObject("alpha", "beta", "gamma");
+var newSymbolsObject = new OnlyCallFunctionObject("alpha", "beta", "gamma");
 
 console.log(``);
 
@@ -350,10 +350,11 @@ giveMeThisData(6, 7);
 
 // Z metodą apply() funkcja działa dobrze nawet przy operatorach reszty i rozproszenia. Przykład poniżej.
 
-let newArrayBind = [3, 7, 15];
+let newArrayWithAplly = [3, 7, 10, 15, 25];
 
 function avgFromArray(...args) {
   var sum = 0;
+  console.log(this);
   for (let value of args) {
     sum += value;
   }
@@ -361,8 +362,10 @@ function avgFromArray(...args) {
 }
 
 let newAverage = avgFromArray.apply(null, [1, 2, 3, 4, 5]);
+let newAverageApplyArray = avgFromArray.apply(null, newArrayWithAplly);
 
 console.log(newAverage);
+console.log(newAverageApplyArray);
 
 //===
 
@@ -376,9 +379,15 @@ console.log(newAverage1);
 
 // Wykorzystanie metody bind()
 
-let newNumberFromBind = avgFromArray.bind();
+let xxxxx = [1, 2];
+let xxxxy = [15, 25];
+let xxxxz = [11, 22];
 
-console.log(newNumberFromBind(2, 3, 5, 10));
+let newNumberFromBind = avgFromArray.bind(3, 7, 8);
+// let newNumberFromBind = avgFromArray.bind();
+
+// console.log(newNumberFromBind(2, 3, 5, 10));
+console.log(newNumberFromBind());
 
 console.log("");
 

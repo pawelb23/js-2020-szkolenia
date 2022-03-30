@@ -111,13 +111,13 @@ const obiektPies = {
   wiek: "5 lat",
   waga: "15 kg",
   rasa: "kundelek",
-  pieseksunia: function(imie) {
+  pieseksunia: function (imie) {
     if (this.imie.match(/a$/)) {
       return (this.plec = "Nasza sunia");
     } else {
       return (this.plec = "Nasz piesek");
     }
-  }
+  },
 };
 
 // obiekPies = {};   // Nie zadziała, gdyż obiektPies już istnieje i nie możemy go nadpisać ---> nie nadpiszemy gdyż został stworzony z const. Możemy za to zmienić pojedyńcze wartości właściwości w obiekcie, co zapisane jest poniżej
@@ -159,7 +159,7 @@ function funkcjaLicznikaWywolan(start) {
 
   let licznikWywolanFunkcji = start;
 
-  return function() {
+  return function () {
     //druga funkcja - wewnątrz ciała pierwszej
 
     return ++licznikWywolanFunkcji;
