@@ -9,7 +9,7 @@ console.log(``);
 
 // Domyślne wartości / Przykłady
 function greet(name = "Stranger") {
-  return console.log("Hello, " + name + "!");
+    return console.log("Hello, " + name + "!");
 }
 greet(); // 'Hello, Stranger!'
 greet(undefined); // 'Hello, Stranger!'
@@ -40,8 +40,9 @@ console.log(``);
 // Taki był stary zapis.
 
 function pomnóż(a, b) {
-  b = typeof b !== "undefined" ? b : 1;
-  return console.log(a * b);
+    // console.log(typeof b);
+    b = typeof b !== "undefined" ? b : 1; //b różne od undefined ? to wartość b : w innym przypadku wartość 1
+    return console.log(a * b);
 }
 
 pomnóż(5, 2); // 10
@@ -52,7 +53,7 @@ console.log(``);
 //----------
 
 function funkMakeArray(x = 1, y) {
-  return [x, y];
+    return [x, y];
 }
 
 console.log(funkMakeArray()); // [1, undefined]
@@ -65,10 +66,10 @@ console.log(``);
 const checkIt = { z: 7 };
 
 function funkAdd([x, y] = [1, 2], { z: z } = { z: 3 }) {
-  console.log(x);
-  console.log(y);
-  console.log(z);
-  return x + y + z;
+    console.log(x);
+    console.log(y);
+    console.log(z);
+    return x + y + z;
 }
 
 console.log(funkAdd()); //wszystkie wartości zostaną odczytane jako domyślne

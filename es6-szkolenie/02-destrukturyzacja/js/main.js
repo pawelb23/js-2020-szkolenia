@@ -29,14 +29,63 @@ console.log(`Poniżej wartości przypisane do zmiennych dzięki destrukturyzacji
 
 // wypisuje 'first = 100, last = 400' do konsoli
 console.log(
-  `first = %d, second = %d, third = %d, last = %d`,
-  first,
-  second,
-  third,
-  last
+    `first = %d, second = %d, third = %d, last = %d`,
+    first,
+    second,
+    third,
+    last
 ); //console.log(`first = %f, last = %f`, first, last); //To ten sam zapis wypisze w konsoli first = 100, last = 400
 
 // console.log(`first = %d, last = %d`, first, last); oznacza, że pod %d musimy podstawić cyfry/liczby z pod zmiennych 'first' i 'last' umieszczonych na końcu console.log ---> UWAGA!!! dane są brane po kolei, więc jeżeli damy więcej zmiennych odwołujących się do wartości (czy nawet samych wartości - np. cyfrę 5) w console.log ---> %d będą je łapały po kolei (first, 5, last)
+
+// Wzór dla poszczególnych skrótów:
+
+// %s for a String
+
+// %d or %i for Number
+
+// %f for Floating points (dla punktów zmiennoprzecinkowych)
+
+// %o for an Object
+
+// %j for an JSON
+
+console.log('');
+
+//---------
+// Obiekt zapisany w js:
+
+const objJson = `{
+    "employees": [
+        { "firstName": "John", "lastName": "Doe" },
+        { "firstName": "Anna", "lastName": "Smith" },
+        { "firstName": "Peter", "lastName": "Jones" }
+    ]
+}`
+
+const jsonToJs = JSON.parse(objJson);
+
+// console.log(jsonToJs.employees);
+
+// console.log(`JSON = %j`, objJson.employees[0].firstName);
+
+// console.log('');
+
+let arrayName = [];
+
+for (let index in jsonToJs.employees) {
+
+    // console.log(jsonToJs.employees[index].firstName);
+    // arrayName.push(jsonToJs.employees[index].firstName);
+    // console.log(arrayName);
+
+    arrayName.push(jsonToJs.employees[index].firstName);
+    // console.log(arrayName);
+    // console.log('');
+
+}
+
+console.log(arrayName);
 
 //----------
 
@@ -53,6 +102,7 @@ console.log(`Age ---> ${age}`);
 const { name, friends } = student;
 // wypisuje 'John has 2 friends!' do konsoli
 console.log("%s has %d friends!", name, friends.length); //%s odnosi się do stringów, %d odnosi się do wartości liczbowych
+// console.log("%s has friends: %s.", name, friends); //Zobaczymy w konsoli --->  John has friends: Bob,Tom.
 
 //-----------
 
@@ -78,30 +128,30 @@ console.log("%s has %d friends!", firstName, friendsAlias.length); //%s odnosi s
 // Używamy destrukturyzacji to samo co poniżej, ale trochę dłuższy zapis - z tym, że bardziej czytelny
 
 const frontEndPersonObject = {
-  name: "Zenon",
-  age: 115,
-  job: "programista", //"programmer"
-  hobby: "zbieranie znaczków", //"collecting stamps"
+    name: "Zenon",
+    age: 115,
+    job: "programista", //"programmer"
+    hobby: "zbieranie znaczków", //"collecting stamps"
 };
 
 const functionPersonInfo = (objectInfo) => {
-  const { name, age, job, hobby } = objectInfo;
-  let ageEnding;
-  const newRegExp = /(2|3|4)$/;
-  const newRegExpTwo = /(12|13|14)$/; //sprawdzamy 12 lub | 13 lub | 14 pasuje, musi być tu nawias () bez tego dolar $ nie obejmie wszystkiego, więc nie zadziała to prawidłowo
-  console.log(newRegExpTwo.test(age));
-  console.log(newRegExp.test(age));
-  if (age === 1) {
-    ageEnding = "rok";
-  } else if (
-    newRegExp.test(age) &&
-    newRegExp.test(age) !== newRegExpTwo.test(age)
-  ) {
-    ageEnding = "lata";
-  } else {
-    ageEnding = "lat";
-  }
-  return console.log(`
+    const { name, age, job, hobby } = objectInfo;
+    let ageEnding;
+    const newRegExp = /(2|3|4)$/;
+    const newRegExpTwo = /(12|13|14)$/; //sprawdzamy 12 lub | 13 lub | 14 pasuje, musi być tu nawias () bez tego dolar $ nie obejmie wszystkiego, więc nie zadziała to prawidłowo
+    console.log(newRegExpTwo.test(age));
+    console.log(newRegExp.test(age));
+    if (age === 1) {
+        ageEnding = "rok";
+    } else if (
+        newRegExp.test(age) &&
+        newRegExp.test(age) !== newRegExpTwo.test(age)
+    ) {
+        ageEnding = "lata";
+    } else {
+        ageEnding = "lat";
+    }
+    return console.log(`
 Imię ---> ${name},
 Wiek ---> ${age} ${ageEnding},
 Praca ---> ${job},
@@ -118,21 +168,21 @@ console.log(``);
 // Używamy destrukturyzacji to samo co wyżej inaczej zapisane (trochę krócej, ale zwłaszcza przy dużej liczbie obiektów i danych może być gorzej czytelne)
 
 const functionPersonInfoTwo = ({ name, age, job, hobby }) => {
-  // const { name, age, job, hobby } = objectInfo;
-  let ageEnding;
-  const newRegExp = /(2|3|4)$/;
-  const newRegExpTwo = /(12|13|14)$/; //sprawdzamy 12 lub | 13 lub | 14 pasuje, musi być tu nawias () bez tego dolar $ nie obejmie wszystkiego, więc nie zadziała to prawidłowo
-  if (age === 1) {
-    ageEnding = "rok";
-  } else if (
-    newRegExp.test(age) &&
-    newRegExp.test(age) !== newRegExpTwo.test(age)
-  ) {
-    ageEnding = "lata";
-  } else {
-    ageEnding = "lat";
-  }
-  return console.log(`
+    // const { name, age, job, hobby } = objectInfo;
+    let ageEnding;
+    const newRegExp = /(2|3|4)$/;
+    const newRegExpTwo = /(12|13|14)$/; //sprawdzamy 12 lub | 13 lub | 14 pasuje, musi być tu nawias () bez tego dolar $ nie obejmie wszystkiego, więc nie zadziała to prawidłowo
+    if (age === 1) {
+        ageEnding = "rok";
+    } else if (
+        newRegExp.test(age) &&
+        newRegExp.test(age) !== newRegExpTwo.test(age)
+    ) {
+        ageEnding = "lata";
+    } else {
+        ageEnding = "lat";
+    }
+    return console.log(`
 Imię ---> ${name},
 Wiek ---> ${age} ${ageEnding},
 Praca ---> ${job},
@@ -147,20 +197,20 @@ console.log(``);
 //----------
 
 const myObjectDetails = {
-  name: "Roman",
-  job: "programmer",
-  formerJobs: {
-    first: "form worker",
-    second: "waiter",
-    recent: "copywriter",
-  },
-  age: 30,
+    name: "Roman",
+    job: "programmer",
+    formerJobs: {
+        first: "form worker",
+        second: "waiter",
+        recent: "copywriter",
+    },
+    age: 30,
 };
 
 const functionPersonInfoObjectInObject = ({
-  formerJobs: { first, second, recent },
+    formerJobs: { first, second, recent },
 }) => {
-  console.log(`
+    console.log(`
   First job --> ${first},
   second ---> ${second},
   recent ---> ${recent}.
@@ -176,16 +226,16 @@ console.log(``);
 //To samo co wyżej tylko możemy wyciągać więcej danych
 
 const functionPersonInfoObjectInObjectTwo = (myObjectDetails) => {
-  const { name, job, formerJobs, age } = myObjectDetails;
-  const { first, second, recent } = formerJobs;
-  console.log(`
+    const { name, job, formerJobs, age } = myObjectDetails;
+    const { first, second, recent } = formerJobs;
+    console.log(`
   Name ---> ${name},
   first job --> ${first},
   second ---> ${second},
   recent ---> ${recent},
   formerJobs ---> ${formerJobs}.
   `);
-  return console.log(formerJobs);
+    return console.log(formerJobs);
 };
 
 functionPersonInfoObjectInObjectTwo(myObjectDetails);
@@ -252,8 +302,8 @@ console.log(``);
 //-------------
 
 function sumAndMultiply(aA, bB) {
-  // return [aA + bB, aA * bB, aA / bB];
-  return [aA + bB, aA * bB];
+    // return [aA + bB, aA * bB, aA / bB];
+    return [aA + bB, aA * bB];
 }
 
 console.log(sumAndMultiply(2, 3));
@@ -269,7 +319,7 @@ console.log(divisionAB);
 const newArrayForNewExercise = ["First Date", "Second Date", "Third Date"];
 
 function sumArrayDate([dateOne, dateTwo, dateThree]) {
-  console.log(`<<<${dateOne}, ${dateTwo}, ${dateThree}>>>`);
+    console.log(`<<<${dateOne}, ${dateTwo}, ${dateThree}>>>`);
 }
 
 sumArrayDate(newArrayForNewExercise);

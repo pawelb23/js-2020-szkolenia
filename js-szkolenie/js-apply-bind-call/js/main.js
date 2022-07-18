@@ -55,21 +55,21 @@ console.log(``);
 //call()
 
 function Product(name, price) {
-  this.name = name;
-  this.price = price;
-  //   console.log(this.name);
+    this.name = name;
+    this.price = price;
+    //   console.log(this.name);
 }
 
 function Food(name, price) {
-  Product.call(this, name, price);
-  console.log(Product.call(this, name, price)); //bez tych trzech parametrów w konsoli otrzymamy undefined
-  this.category = "food";
-  //   return this.price;
+    Product.call(this, name, price);
+    console.log(Product.call(this, name, price)); //bez tych trzech parametrów w konsoli otrzymamy undefined
+    this.category = "food";
+    //   return this.price;
 }
 
 function Toy(name, price) {
-  Product.call(this, name, price);
-  this.category = "toy";
+    Product.call(this, name, price);
+    this.category = "toy";
 }
 
 const cheeseFeta = new Food("feta", 6); //wywołuje funkcje
@@ -95,13 +95,13 @@ console.log(``);
 //----------------
 
 function Product(name, price) {
-  this.name = name;
-  this.price = price;
+    this.name = name;
+    this.price = price;
 }
 
 function Food(name, price) {
-  Product.call(this, name, price);
-  this.category = "food";
+    Product.call(this, name, price);
+    this.category = "food";
 }
 
 console.log(new Food("cheese", 5).name);
@@ -112,13 +112,13 @@ console.log(``);
 //------------------
 
 function ProductTwo(name, price) {
-  this.name = name;
-  this.price = price;
+    this.name = name;
+    this.price = price;
 }
 
 function FoodTwo(name, price) {
-  Product.call(this, "pasta", price);
-  this.category = "food";
+    Product.call(this, "pasta", price);
+    this.category = "food";
 }
 
 console.log(new FoodTwo("cheese", 5).name);
@@ -127,15 +127,15 @@ console.log(new FoodTwo("cheese", 5).name);
 console.log(``);
 
 function WeWillReceiveObject(symbolOne, symbolTwo, symbolThree) {
-  this.symbolOne = symbolOne;
-  this.symbolTwo = symbolTwo;
-  this.symbolThree = symbolThree;
+    this.symbolOne = symbolOne;
+    this.symbolTwo = symbolTwo;
+    this.symbolThree = symbolThree;
 }
 
 function OnlyCallFunctionObject(symbolOne, symbolTwo, symbolThree) {
-  //Funkcja ma tylko trzy parametry, w środku jest właściwie pusta
-  WeWillReceiveObject.call(this, symbolOne, symbolTwo, symbolThree); //dzięki temu, że pobieramy informacje odnośnie symbolOne, symbolTwo, symbolThree z funkcji weWillReceiveObject (dzięki metodzie call i this) możemy zobaczyć, że onlyCallFunction stało się obiektem z właściwościami i ich wartościami
-  console.log("Funkcja działa");
+    //Funkcja ma tylko trzy parametry, w środku jest właściwie pusta
+    WeWillReceiveObject.call(this, symbolOne, symbolTwo, symbolThree); //dzięki temu, że pobieramy informacje odnośnie symbolOne, symbolTwo, symbolThree z funkcji weWillReceiveObject (dzięki metodzie call i this) możemy zobaczyć, że onlyCallFunction stało się obiektem z właściwościami i ich wartościami
+    console.log("Funkcja działa");
 }
 
 var newSymbolsObject = new OnlyCallFunctionObject("alpha", "beta", "gamma");
@@ -153,11 +153,11 @@ console.log(newSymbolsObject); //a tak obejrzymy cały obiekt
 console.log(``);
 
 const module = {
-  x: 42,
-  //   y: 43,
-  getX: function () {
-    return this.x;
-  },
+    x: 42,
+    //   y: 43,
+    getX: function() {
+        return this.x;
+    },
 };
 
 const unboundGetX = module.getX;
@@ -178,11 +178,11 @@ console.log(boundGetX());
 console.log(``);
 
 const moduleOne = {
-  x: 42,
-  y: 43,
-  getXY: function () {
-    return this.x + this.y;
-  },
+    x: 42,
+    y: 43,
+    getXY: function() {
+        return this.x + this.y;
+    },
 };
 
 const boundGetXY = moduleOne.getXY.bind(moduleOne);
@@ -196,14 +196,14 @@ console.log(boundGetXY());
 console.log("");
 
 var o = {
-  a: 4,
-  method: function (arg1 = 0, arg2 = 0, arg3 = 0, arg4 = 0) {
-    console.log(this.a + arg1 + arg2 + arg3 + arg4); // wypisuje this oraz przekazane do funkcji argumenty
-  },
+    a: 4,
+    method: function(arg1 = 0, arg2 = 0, arg3 = 0, arg4 = 0) {
+        console.log(this.a + arg1 + arg2 + arg3 + arg4); // wypisuje this oraz przekazane do funkcji argumenty
+    },
 };
 
 var xy = {
-  a: 2,
+    a: 2,
 };
 
 o.method(1, 2); //7
@@ -213,16 +213,16 @@ o.method.apply(xy, [1, 2, 3, 4]); //12
 console.log("");
 
 var o = {
-  a: 4,
-  method: function () {
-    console.log(this.a, Array.from(arguments)); // wypisuje this oraz przekazane do funkcji argumenty
-  },
+    a: 4,
+    method: function() {
+        console.log(this.a, Array.from(arguments)); // wypisuje this oraz przekazane do funkcji argumenty
+    },
 };
 
 console.log(o.a);
 
 var xy = {
-  a: 2,
+    a: 2,
 };
 
 o.method(1, 2); //  4 [1, 2]
@@ -237,7 +237,7 @@ o.method.apply(xy, [1, 2, 3, 4]); // 2 [1, 2, 3, 4]
 // Bindowanie ---> ciężka sprawa trzeba uważać, należy przekazywać bardzo ostrożnie określając bardzo uważnie i dokładnie bindowany obiekt. Poniżej przykłady użycia bind.
 
 let doBindowania = {
-  a: 5,
+    a: 5,
 };
 
 const bindowanie = o.method.bind(doBindowania);
@@ -263,12 +263,12 @@ console.log(`Poniżej >>> m jak wyżej, ale m powiększa się tu o m(3, 4)  <<<`
 
 m(3, 4); // 4 [1,2,3,4]
 
-setTimeout(function () {
-  console.log(
-    `
+setTimeout(function() {
+    console.log(
+        `
     Poniżej >>> m ponownie podstawowe (wszystko wynika oczywiście z użycia metody bind wcześniej ---- Tu użycie z setTimeout <<<
       `
-  );
+    );
 });
 
 setTimeout(m); // 4 [1,2]
@@ -276,7 +276,7 @@ setTimeout(m); // 4 [1,2]
 // setInterval(m, 5000); // 4 [1,2] //Zadziała co 5 sekund
 
 console.log(
-  `Poniżej >>> m2 powiększa się o m i o wynikające z bindowania 3,4 oraz dodajemy m2(5, 6)  <<<`
+    `Poniżej >>> m2 powiększa się o m i o wynikające z bindowania 3,4 oraz dodajemy m2(5, 6)  <<<`
 );
 
 const m2 = m.bind(o, 3, 4);
@@ -320,7 +320,7 @@ console.log("");
 // Poniżej przekazujemy do this wartość za pomocą bind, tworzymy także tablicę z argumentami
 
 function bindFunctionWithArray() {
-  console.log(this, Array.from(arguments));
+    console.log(this, Array.from(arguments));
 }
 
 bindFunctionWithArray();
@@ -335,7 +335,7 @@ console.log("");
 //-------------------
 
 function bindFunction(a, b) {
-  console.log(this, a, b);
+    console.log(this, a, b);
 }
 
 const giveMeThisData = bindFunction.bind(5);
@@ -353,12 +353,13 @@ giveMeThisData(6, 7);
 let newArrayWithAplly = [3, 7, 10, 15, 25];
 
 function avgFromArray(...args) {
-  var sum = 0;
-  console.log(this);
-  for (let value of args) {
-    sum += value;
-  }
-  return sum / args.length;
+    var sum = 0;
+    // console.log(args);
+    console.log(this);
+    for (let value of args) {
+        sum += value;
+    }
+    return sum / args.length;
 }
 
 let newAverage = avgFromArray.apply(null, [1, 2, 3, 4, 5]);

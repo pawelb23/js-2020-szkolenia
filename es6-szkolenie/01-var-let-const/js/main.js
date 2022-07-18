@@ -12,15 +12,15 @@ console.log(``);
 console.log(`Przykład 1`);
 
 if (true) {
-  var zmiennaTypuVar = 10;
+    var zmiennaTypuVar = 10;
 
-  let zmiennaTypuLet = 30;
+    let zmiennaTypuLet = 30;
 
-  const zmiennaTypuConst = 50;
+    const zmiennaTypuConst = 50;
 }
 
 console.log(
-  `Zmienna typu "var" po za blokiem jest widoczna i jej wartość wynosi --- ` +
+    `Zmienna typu "var" po za blokiem jest widoczna i jej wartość wynosi --- ` +
     zmiennaTypuVar
 ); //w konsoli bedzie widoczny wynik
 
@@ -35,16 +35,16 @@ console.log(``);
 console.log(`Przykład 2`);
 
 if (true) {
-  let zmiennaTypuLet = 100;
+    let zmiennaTypuLet = 100;
 
-  console.log(`Zmienna typu "let" w bloku ma wartość --- ` + zmiennaTypuLet);
+    console.log(`Zmienna typu "let" w bloku ma wartość --- ` + zmiennaTypuLet);
 
-  zmiennaTypuLet = 150;
+    zmiennaTypuLet = 150;
 
-  console.log(
-    `Nadpisana wartość dla zmiennej typu "let" w bloku, teraz wynosi --- ` +
-      zmiennaTypuLet
-  );
+    console.log(
+        `Nadpisana wartość dla zmiennej typu "let" w bloku, teraz wynosi --- ` +
+        zmiennaTypuLet
+    );
 }
 
 console.log(``);
@@ -54,14 +54,14 @@ console.log(``);
 console.log(`Przykład 3`);
 
 if (true) {
-  const zmiennaTypuConst = 70;
+    const zmiennaTypuConst = 70;
 
-  console.log(
-    `Zmienna typu "const" w bloku ma wartość --- ` + zmiennaTypuConst
-  );
+    console.log(
+        `Zmienna typu "const" w bloku ma wartość --- ` + zmiennaTypuConst
+    );
 
-  // zmiennaTypuConst = 75;
-  //Jeżeli będziemy chcieli zmienić wartość zmiennej typu const, czyli odkomentujemy powyższą zmienną i przypiszemy jej nową wartość w konsoli zobaczymy automatycznie błąd, gdyż zmienna typu const ma jedną stałą wartość, której później już nie można zmieniać.
+    // zmiennaTypuConst = 75;
+    //Jeżeli będziemy chcieli zmienić wartość zmiennej typu const, czyli odkomentujemy powyższą zmienną i przypiszemy jej nową wartość w konsoli zobaczymy automatycznie błąd, gdyż zmienna typu const ma jedną stałą wartość, której później już nie można zmieniać.
 }
 
 console.log(``);
@@ -76,9 +76,9 @@ console.log(``);
 const arrayWithLetters = ["a", "b", "c", "d", "e"];
 
 for (let i = 0; i < arrayWithLetters.length; i++) {
-  console.log(
-    `Dla indeksu - ${i}, wartość w tablicy to ---> '${arrayWithLetters[i]}'!!!`
-  );
+    console.log(
+        `Dla indeksu - ${i}, wartość w tablicy to ---> '${arrayWithLetters[i]}'!!!`
+    );
 }
 
 console.log(``);
@@ -106,18 +106,18 @@ console.log(``);
 // const i obiekty
 
 const obiektPies = {
-  plec: "brak danych",
-  imie: "Burek",
-  wiek: "5 lat",
-  waga: "15 kg",
-  rasa: "kundelek",
-  pieseksunia: function (imie) {
-    if (this.imie.match(/a$/)) {
-      return (this.plec = "Nasza sunia");
-    } else {
-      return (this.plec = "Nasz piesek");
-    }
-  },
+    plec: "brak danych",
+    imie: "Burek",
+    wiek: "5 lat",
+    waga: "15 kg",
+    rasa: "kundelek",
+    pieseksunia: function(imie) {
+        if (this.imie.match(/a$/)) {
+            return (this.plec = "Nasza sunia");
+        } else {
+            return (this.plec = "Nasz piesek");
+        }
+    },
 };
 
 // obiekPies = {};   // Nie zadziała, gdyż obiektPies już istnieje i nie możemy go nadpisać ---> nie nadpiszemy gdyż został stworzony z const. Możemy za to zmienić pojedyńcze wartości właściwości w obiekcie, co zapisane jest poniżej
@@ -129,7 +129,7 @@ obiektPies.waga = "16.5 kg"; //Tak zadziała, zastępujemy pojedyńczą wartoś�
 obiektPies.pieseksunia();
 
 console.log(
-  `${obiektPies.plec}, wabi się ${obiektPies.imie}, rasa to ${obiektPies.rasa}, ma ${obiektPies.wiek} i waży ${obiektPies.waga}.`
+    `${obiektPies.plec}, wabi się ${obiektPies.imie}, rasa to ${obiektPies.rasa}, ma ${obiektPies.wiek} i waży ${obiektPies.waga}.`
 );
 
 console.log(``);
@@ -137,17 +137,17 @@ console.log(``);
 // Takie ciekawostki
 
 function functionForConst() {
-  const constOne = "one";
-  const constTwo = "two";
+    const constOne = "one";
+    const constTwo = "two";
 
-  return [constOne, constTwo]; //zwracamy dwie zmienne w postaci tablicy
+    return [constOne, constTwo]; //zwracamy dwie zmienne w postaci tablicy
 }
 
 let letOne = functionForConst()[0]; //oczywiście to może być const albo var
 let letTwo = functionForConst()[1]; //oczywiście to może być const albo var
 
 console.log(
-  `Zmienna letOne ma wartość - '${letOne}', zaś zmienna letTwo ma wartość - '${letTwo}'`
+    `Zmienna letOne ma wartość - '${letOne}', zaś zmienna letTwo ma wartość - '${letTwo}'`
 );
 
 console.log(``);
@@ -155,15 +155,15 @@ console.log(``);
 //------
 
 function funkcjaLicznikaWywolan(start) {
-  //pierwsz funkcja, w której mamy drugą funkcję
+    //pierwsz funkcja, w której mamy drugą funkcję
 
-  let licznikWywolanFunkcji = start;
+    let licznikWywolanFunkcji = start;
 
-  return function () {
-    //druga funkcja - wewnątrz ciała pierwszej
+    return function() {
+        //druga funkcja - wewnątrz ciała pierwszej
 
-    return ++licznikWywolanFunkcji;
-  };
+        return ++licznikWywolanFunkcji;
+    };
 }
 
 let zmiennaDoLicznika = funkcjaLicznikaWywolan(0); //wywyołujemy pierwszą funkcję
@@ -185,10 +185,10 @@ let age = 100;
 // let name = `Stevo`; //po odkomentowaniu tej zmiennej wywali błąd w konsoli, przez var name wewnątrz funkcji
 
 if (true) {
-  var name = `John`; //jeżeli var zamienimy na const lub let to po odkomentowaniu 'let name = 'Stewo'` nie będzie żadnych konfliktów
-  let age = 42;
+    var name = `John`; //jeżeli var zamienimy na const lub let to po odkomentowaniu 'let name = 'Stewo'` nie będzie żadnych konfliktów
+    let age = 42;
 
-  console.log(age);
+    console.log(age);
 }
 
 console.log(name);

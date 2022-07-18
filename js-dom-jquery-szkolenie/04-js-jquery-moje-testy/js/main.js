@@ -15,9 +15,9 @@
 //});
 
 //Okazuje się, że ten kod można jeszcze bardziej skrócić (też przy pomocy jQuery).
-$(function () {
-  console.log("Biblioteka jQuery została wczytana!");
-  console.log("");
+$(function() {
+    console.log("Biblioteka jQuery została wczytana!");
+    console.log("");
 });
 
 console.log($(this));
@@ -136,11 +136,11 @@ console.log($("#data-div").data("hidden")); // => false
 var animalsSelect = $("#animals");
 
 $("#animals").on({
-  dblclick: function () {
-    // ---> To ten sam zapis  "dblclick": po prostu VSC sam to zmienia (czyli usuwa cudzysłów w zdarzeniach)
-    $("#animal-result").val($(this).val().toUpperCase()); //wybieramy cat lub dog, zmieniamy litery na duże i wstawiamy w input
-    //w krokach wybieramy pusty input i potem z pomocą val wstawiamy zwierzę wybrane z pomocą dblclick - aby był to wybór, który nas interesuje także używamy metody val i na koniec to co chcemy wstawić (jeszcze przed wstawieniem) zmieniamy na pismo dużymi literami
-  },
+    dblclick: function() {
+        // ---> To ten sam zapis  "dblclick": po prostu VSC sam to zmienia (czyli usuwa cudzysłów w zdarzeniach)
+        $("#animal-result").val($(this).val().toUpperCase()); //wybieramy cat lub dog, zmieniamy litery na duże i wstawiamy w input
+        //w krokach wybieramy pusty input i potem z pomocą val wstawiamy zwierzę wybrane z pomocą dblclick - aby był to wybór, który nas interesuje także używamy metody val i na koniec to co chcemy wstawić (jeszcze przed wstawieniem) zmieniamy na pismo dużymi literami
+    },
 });
 
 console.log("");
@@ -148,11 +148,11 @@ console.log("");
 //------
 
 $("#test-id")
-  .css({
-    backgroundColor: "green",
-  })
-  .hide("slow")
-  .show(2500); //albo np. tak
+    .css({
+        backgroundColor: "green",
+    })
+    .hide("slow")
+    .show(2500); //albo np. tak
 
 console.log($(".test-class"));
 
@@ -168,9 +168,9 @@ console.log($("#test-id .test-class p:last-child").text()); //wyświetlamy tekst
 
 console.log("");
 
-$("#test-id .test-class p:empty").html("Hello <b>This</b> World!!!"); //dodajemy kod do pustego elementu <p>
+$("#test-id .test-class p:empty").text("Hello!!! <b>This</b> World!!!"); //dodajemy kod do pustego elementu <p>
 
-console.log($("#test-id .test-class p:nth-last-child(2)").html()); //wyświetlamy zawartość danego elementu
+console.log($("#test-id .test-class p:nth-last-child(2)").text()); //wyświetlamy zawartość danego elementu
 
 console.log("");
 
@@ -195,7 +195,8 @@ $(".test-class-two .p-class1").css("color", "blue"); //zmienimy kolor tekstu w <
 //$( "p" ).removeClass( "green important" );//WAŻNE!!! W notatkach z Akademia108 jest błąd, aby usunąć więcej niż jedną klasę nie wolno między nimi wstawiać przecinka musi być tak jak w html --- czyli tylko spacja i razem klasy w pazurkach
 
 $(".test-class-two p:last-child").removeClass("class-to-remove also-to-remove"); //usuwamy dwie klasy z ostatniego elementu <p>
--$(".test-class-two p:last-child").addClass("we-add-new-class"); //do ostatniego elementu <p> dodajemy nową klasę
+-
+$(".test-class-two p:last-child").addClass("we-add-new-class"); //do ostatniego elementu <p> dodajemy nową klasę
 
 //Metoda val():
 //$(selektor).val(); // zwraca wartość z pierwszego dopasowanego pola formularza
@@ -231,9 +232,9 @@ $(".test-class-two p:last-child").removeClass("class-to-remove also-to-remove");
 //kolor obramowania czerwony.
 
 $("div").find(".change-with-find").css({
-  color: "rgba(89, 51, 132, 0.9)",
-  border: "2px solid black",
-  backgroundColor: "rgba(223, 234, 244, 0.3)",
+    color: "rgba(89, 51, 132, 0.9)",
+    border: "2px solid black",
+    backgroundColor: "rgba(223, 234, 244, 0.3)",
 }); //zmienimy kolor czcionki, wstawiamy obwódkę i jej kolor --- (uwaga w przypadku border trzeba podać parametr odpowiadający za rodzaj obwódki u nas solid - czyli jednolita)
 
 //---
@@ -257,21 +258,21 @@ $("div").find(".change-with-find").css({
 //wszystkich elementów <li>, która wypisuje w konsoli tekst znajdujący
 //się w elementach <li>.
 
-$(".move-p-text").click(function () {
-  $(".move-p-text").css({
-    color: "green",
-    backgroundColor: "rgba(148, 197, 242, 0.4)",
-  }); //dodajemy trochę stylowania
-  $(".move-p-text").attr("disabled", "disabled"); //dodajemy atrybut blokujący buttona - wymaga dwóch danych w nawiasie
+$(".move-p-text").click(function() {
+    $(".move-p-text").css({
+        color: "green",
+        backgroundColor: "rgba(148, 197, 242, 0.4)",
+    }); //dodajemy trochę stylowania
+    $(".move-p-text").attr("disabled", "disabled"); //dodajemy atrybut blokujący buttona - wymaga dwóch danych w nawiasie
 
-  $(".button-and-p-div p").each(function () {
-    console.log($(this).text()); //this sprawi, że w konsoli zostaną wypisane jeden pod drugim(w osobnych liniach konsoli) wszystkie teksty z elementów <p>, zawartych w <div class="button-and-p-div>
-    //        console.log($('.button-and-p-div p').text());
-  });
+    $(".button-and-p-div p").each(function() {
+        console.log($(this).text()); //this sprawi, że w konsoli zostaną wypisane jeden pod drugim(w osobnych liniach konsoli) wszystkie teksty z elementów <p>, zawartych w <div class="button-and-p-div>
+        //        console.log($('.button-and-p-div p').text());
+    });
 
-  console.log(this);
+    console.log(this);
 
-  console.log("");
+    console.log("");
 });
 
 //================
@@ -294,7 +295,7 @@ $(".move-p-text").click(function () {
 //➔ off() pozwala usuwać eventy z bieżącego elementu
 //Np.
 function hello() {
-  console.log("Hello World!");
+    console.log("Hello World!");
 }
 var alertButton = $(".alert-btn");
 alertButton.on("click", hello); //Najpierw trzeba sprawdzić co się stanie po kliknięciu (sprawdzić w console.log), a potem odkomentować linijkę poniżej
@@ -343,33 +344,33 @@ alertButton.on("click", hello); //Najpierw trzeba sprawdzić co się stanie po k
 
 //Drugi sposób - ciekawszy bo tak możemy podpiąć kilka zdarzeń do jednego elementu
 $("form").on({
-  submit: function (e) {
-    e.preventDefault();
-    $('input[type="submit"]').attr("class", "disabled-on");
-    $('input[type="submit"]').attr("disabled", "disabled");
-    $('input[type="reset"]').attr("disabled", "disabled");
-    $("form").css("backgroundColor", "rgba(98, 82, 62, 0.3)");
-    console.log("Imię: " + $("#imie").val());
-    console.log("Nazwisko: " + $("#nazwisko").val());
-    console.log("E-mail: " + $("#email").val());
-    console.log("");
-  },
-  mouseover: function () {
-    if ($('input[type="submit"]').hasClass("disabled-on")) {
-      $("form").css({
-        backgroundColor: "rgba(98, 82, 62, 0.3)",
-      });
-    } else {
-      $("form").css({
-        backgroundColor: "rgba(98, 82, 62, 0.5)",
-      });
-    }
-  },
-  mouseout: function () {
-    $("form").css({
-      backgroundColor: "rgba(98, 82, 62, 0.3)",
-    });
-  },
+    submit: function(e) {
+        e.preventDefault();
+        $('input[type="submit"]').attr("class", "disabled-on");
+        $('input[type="submit"]').attr("disabled", "disabled");
+        $('input[type="reset"]').attr("disabled", "disabled");
+        $("form").css("backgroundColor", "rgba(98, 82, 62, 0.3)");
+        console.log("Imię: " + $("#imie").val());
+        console.log("Nazwisko: " + $("#nazwisko").val());
+        console.log("E-mail: " + $("#email").val());
+        console.log("");
+    },
+    mouseover: function() {
+        if ($('input[type="submit"]').hasClass("disabled-on")) {
+            $("form").css({
+                backgroundColor: "rgba(98, 82, 62, 0.3)",
+            });
+        } else {
+            $("form").css({
+                backgroundColor: "rgba(98, 82, 62, 0.5)",
+            });
+        }
+    },
+    mouseout: function() {
+        $("form").css({
+            backgroundColor: "rgba(98, 82, 62, 0.3)",
+        });
+    },
 });
 
 //===================
@@ -407,14 +408,14 @@ $("form").on({
 //} );
 
 $(".p-class1 span").on({
-  mouseover: function (e) {
-    $(".p-class1").find("span").eq(0).fadeOut(2500);
-    e.stopPropagation();
-  },
-  mouseout: function (e) {
-    $(".p-class1").find("span").eq(0).fadeIn(2500);
-    e.stopPropagation();
-  },
+    mouseover: function(e) {
+        $(".p-class1").find("span").eq(0).fadeOut(2500);
+        e.stopPropagation();
+    },
+    mouseout: function(e) {
+        $(".p-class1").find("span").eq(0).fadeIn(2500);
+        e.stopPropagation();
+    },
 });
 
 //Za pomocą metody slideUp() i slideDown() można płynnie zwijać
