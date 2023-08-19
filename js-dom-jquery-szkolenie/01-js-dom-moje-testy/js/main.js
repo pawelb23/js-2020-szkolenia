@@ -291,14 +291,15 @@ document.getElementById("add-event-link").addEventListener("click", showText);
 
 document.getElementById("exampleDiv").addEventListener("click", function(e) {
     alert("Kliknięto div");
+    console.log("ups!");
 });
 
 document.getElementById("exampleLink").addEventListener("click", function(e) {
     /*
-      Bez dwóch poniższych linijek kliknięcie na link spowoduje wyświetlenie komunikatu
-      "Kliknięto link", a następnie komunikatu "Kliknięto div". Dzięki dodaniu tych linijek kodu
-      wyświetli się tylko pierwszy komunikat (właściwie to dzięki  e.stopPropagation() tylko, zaś dzięki  e.preventDefault() strona nie odświeży się sama).
-      */
+                                          Bez dwóch poniższych linijek kliknięcie na link spowoduje wyświetlenie komunikatu
+                                          "Kliknięto link", a następnie komunikatu "Kliknięto div". Dzięki dodaniu tych linijek kodu
+                                          wyświetli się tylko pierwszy komunikat (właściwie to dzięki  e.stopPropagation() tylko, zaś dzięki  e.preventDefault() strona nie odświeży się sama).
+                                          */
     e.preventDefault(); //Dzięki dodaniu tej linijki, strona nie odświeży się sama
     e.stopPropagation();
     alert("Kliknięto link");
@@ -342,5 +343,21 @@ document.getElementsByClassName("this-div")[0].appendChild(el); //Jeżeli używa
 console.log(document.getElementsByClassName("this-div"));
 
 console.log(``);
+
+//----------
+
+// Poniżej - Pokazujemy na stronie elementy z tablicy, przy okazji usuwamy wszystkie przecinki (mój sposób).
+
+let info = [1, 2, 3];
+
+let actualInfo = info.map((numb) => `<span>${numb}</span>` + "<br>");
+
+let firstInfo = document.getElementById("js-root");
+
+firstInfo.innerHTML = actualInfo;
+
+firstInfo.innerHTML = firstInfo.innerHTML.replace(/,/g, "");
+
+console.log(firstInfo);
 
 //----------

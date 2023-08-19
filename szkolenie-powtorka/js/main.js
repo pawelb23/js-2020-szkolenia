@@ -237,7 +237,10 @@ console.log(toPairs(obj));
 
 var person = {
     name: "John",
-    greet: function greet() {
+    // greet: function() {
+    //     console.log(`Hello, I'm ` + this.name);
+    // }
+    greet() { //to samo co powyżej zakomentowane (czyli tak też możemy wywoływać metodę/funkcję w obiekcie)
         console.log(`Hello, I'm ` + this.name);
     }
 }
@@ -250,7 +253,7 @@ monster = {
 
 
 person.greet.call(monster);
-person.greet.apply(monster);
+// person.greet.apply(monster);//działa podobnie jak wyżej
 
 function num() {
     return this;
@@ -505,5 +508,24 @@ console.log('');
 //==============
 
 // Pętla "for in" vs "for of"
+
+//==============
+
+var today = new Date();
+
+var yesterday = new Date();
+
+var yestDat = yesterday.setDate(today.getDate() - 1);
+
+// console.log(today.getDate() - 1);
+
+console.log(yesterday); //przy takim zestawieniu tu i powyżej otrzymamy tutaj wczorajszą datę
+
+//==============
+
+let dateParams = [2020, 0, 1];
+let date = new Date(...dateParams);
+
+console.log(date); //tworzy obiekt daty ---> 1 stycznia 2020
 
 //==============

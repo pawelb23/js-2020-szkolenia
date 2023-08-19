@@ -393,3 +393,30 @@ console.log(newNumberFromBind());
 console.log("");
 
 //============
+
+const otherObj = {
+    value: "some value",
+    method() {
+        return this.value;
+    },
+};
+
+const xVar = otherObj.method;
+
+const xyVar = xVar.bind(otherObj);
+
+setTimeout(() => {
+    console.log(`
+    ${otherObj.method()}
+    `); // "some value"
+
+    console.log(`
+    ${xVar}
+    `); //undifined
+
+    console.log(`
+    ${xyVar()}
+    `); //some value
+}, 1000);
+
+//============

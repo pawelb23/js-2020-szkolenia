@@ -1,0 +1,12 @@
+* {
+    text-align: center;
+}
+
+body {
+    background-color: green;
+}
+
+.input-element {
+    text-align: left;
+    margin-bottom: 25px;
+}

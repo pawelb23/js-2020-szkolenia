@@ -1,29 +1,37 @@
 body {
-  background-color: rgba(155, 77, 21, 0.7);
+    background-color: rgba(155, 77, 21, 0.7);
 }
 
 #content #container ul li,
 #content #container-two span p {
-  margin: 10px;
-  font-size: 25px;
-  text-shadow: 2px 2px 4px;
+    margin: 10px;
+    font-size: 25px;
+    text-shadow: 2px 2px 4px;
 }
 
 #content #container ul {
-  border: 5px solid black;
-  box-shadow: 5px 10px 25px;
-  /*     box-shadow: inset 5px 10px 25px;*/
-  list-style-type: square;
-  /* list-style-type: none; --- usunie kropki przy tekście, może być też wstawione przy li */
+    border: 5px solid black;
+    box-shadow: 5px 10px 25px;
+    /*     box-shadow: inset 5px 10px 25px;*/
+    list-style-type: square;
+    /* list-style-type: none; --- usunie kropki przy tekście, może być też wstawione przy li */
 }
 
 #content #container-two {
-  margin-top: 90px;
+    margin-top: 90px;
 }
 
 #button-with-click p span.css-span-events:hover {
-  text-decoration: underline;
-  background-color: black;
-  color: white;
-  cursor: pointer;
+    text-decoration: underline;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+#js-root {
+    margin: 10px;
+    text-align: center;
+    padding: 10px;
+    width: 50px;
+    border: 5px solid black;
 }

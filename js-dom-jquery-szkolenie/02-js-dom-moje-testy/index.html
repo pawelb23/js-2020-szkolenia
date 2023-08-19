@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>02 js - DOM (moje testy)</title>
 
-    <link rel="stylesheet" href="css/style.css">
-</head>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
-<body>
-
-    <div class="foo bar">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, nostrum inventore consequatur sed eveniet perspiciatis eos, consectetur maxime placeat eaque, doloremque saepe possimus distinctio enim quis et iste quas ducimus.</div>
+  <body>
+    <div class="foo bar">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur,
+      nostrum inventore consequatur sed eveniet perspiciatis eos, consectetur
+      maxime placeat eaque, doloremque saepe possimus distinctio enim quis et
+      iste quas ducimus.
+    </div>
 
     <div id="div-to-add-fragment"></div>
 
@@ -18,41 +21,30 @@
 
     <!--   Function onClick()   -->
     <div id="first-example-event">
-
-        <button class="help-btn" onclick="onClick()">Help</button>
-
+      <button class="help-btn" onclick="firstOnClick()">Help</button>
     </div>
 
     <!--   Function onClickSecond()   -->
     <div id="second-example-event">
-
-        <button class="second-help-btn">Second Help</button>
-
+      <button class="second-help-btn">Second Help</button>
     </div>
 
     <form>
+      <input type="text" />
 
-        <input type="text">
-
-        <input type="submit">
-
+      <input type="submit" value="Click!" />
     </form>
 
     <section id="sectionFirst">
+      <div id="parFirst">
+        <p>Tekst w tym akapicie.</p>
 
-        <div id="parFirst">
+        <a id="link" href="#">Akapit Link 1</a>
 
-            <p>Tekst w tym akapicie.</p>
-
-            <a id="link" href="#">Akapit Link 1</a>
-
-            <a href="#">Akapit Link 2</a>
-
-        </div>
-
+        <a href="#">Akapit Link 2</a>
+      </div>
     </section>
 
     <script src="js/main.js"></script>
-</body>
-
+  </body>
 </html>

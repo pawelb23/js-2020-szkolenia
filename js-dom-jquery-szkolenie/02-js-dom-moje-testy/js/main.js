@@ -29,7 +29,7 @@ document.body.prepend(myButton);
 
 myButton.classList.add("btn-primary"); //czyli tak, gdzie oprócz nazwy (czyli class) dodaje się także jej wartość (tutaj 'btn-primary')
 
-myButton.setAttribute("disabled", "false"); //ustawiamy nazwę (disabled) i jej wartość (false), dokońca to tutaj nie zadziała odpowiednio, bo czy jest true czy false cały czas button jest wyłączony czyli disabled
+myButton.setAttribute("disabled", "true"); //UWAGA!!! jeżeli ustawimy atrybut (disabled) i jego wartość na (false) to button wciąż jest wyłączony (disabled), aby go włączyć należy usunąć atrytut (disabled)
 
 //myButton.removeAttribute('disabled');//aby usunąć wyłączenie buttona, możemy np. usunąć Atrybut disabled
 
@@ -159,8 +159,8 @@ console.log("");
 
 //First example
 
-function onClick() {
-  console.log("Help!");
+function firstOnClick() {
+  console.log("First Help!");
   console.log("");
 }
 
@@ -211,7 +211,7 @@ document.querySelector("form").addEventListener("submit", onSubmit);
 //---
 
 //Sprawdzenie jakiego typu to zdarzenie
-document.getElementById("link").addEventListener("click", function(e) {
+document.getElementById("link").addEventListener("click", function (e) {
   if (!e) var e = window.event; // dla IE
   console.log(e.type);
 });
@@ -219,7 +219,7 @@ document.getElementById("link").addEventListener("click", function(e) {
 //====================
 
 function runButtonHello() {
-  document.querySelector(".btn-primary").removeAttribute("disabled", "false");
+  document.querySelector(".btn-primary").removeAttribute("disabled", "true");
   document.querySelector(".btn-primary").style.backgroundColor =
     "rgba(235, 202, 62, 0.7)";
   document.querySelector(".btn-primary").style.cursor = "pointer";
@@ -234,7 +234,7 @@ function runSecondButton() {
   document.querySelector(".second-btn").removeAttribute("disabled", "true");
   document.querySelector(".second-btn").style.backgroundColor = "green";
   document.querySelector(".second-btn").style.cursor = "pointer";
-  document.querySelector(".btn-primary").setAttribute("disabled", "false");
+  document.querySelector(".btn-primary").setAttribute("disabled", "true");
   document.querySelector(".btn-primary").style.backgroundColor = "#87afd1";
   document.querySelector(".btn-primary").style.cursor = "no-drop";
   //   console.log(this);//Wyświetli w konsoli .btn-primary
@@ -263,7 +263,7 @@ if (document.readyState === "loading") {
 //Żeby móc pobierać elementy ze strony, powinny być one już dostępne dla skryptu, czyli powinny być już wczytane przez przeglądarkę. Aby mieć pewność, że kod, który odwołuje się do elementów w kodzie HTML poczeka na ich wczytanie, powinniśmy użyć zdarzenia DOMContentLoaded. Wszystkie skrypty operujące na elementach DOM powinny korzystać z tego eventu.
 
 //Przykład trochę prostszy z innego miejsca
-document.addEventListener("DOMContentLoaded", function(event) {
+document.addEventListener("DOMContentLoaded", function (event) {
   console.log("DOM został wczytany");
   console.log("Tutaj dopiero wyłapujemy elementy");
   console.log("");
